@@ -1,12 +1,14 @@
 import wollok.game.*
 import player.*
 import config.*
+import enemigos.*
 
 program UNQgame {
 	game.title("AmUNQ Us")
 	
 	//VISUALES
 	game.addVisual(player)
+	game.addVisualIn(new Tripulante(), game.at(3, 0))
 	
 	//CONFIGURACIONES
 	game.height(10)
@@ -16,9 +18,10 @@ program UNQgame {
 	game.boardGround("fondo1.jpg")
 	
 	//Musica
-	game.sound("amongUsTrap.wav")
+	game.sound("amongUsTrap.wav") //no esta andando
 	
 	config.configurarTeclas()
+	config.configurarColisiones()
 	
 	//DEBUG
 	game.showAttributes(player)

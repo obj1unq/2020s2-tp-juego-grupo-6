@@ -39,7 +39,10 @@ object player {
 		and		nuevaPosicion.y().between(0, game.height() - 1)
 	}
 	
-	
+	method esAtacado(danio){
+		vida -=10
+	}
+	//cuando la vida es 0 debe perder
 	
 	
 }
