@@ -10,7 +10,13 @@ program UNQgame {
 	
 	//CONFIGURACIONES
 	game.height(10)
-	game.width(10)
+	game.width(25)
+	
+	//Fondo
+	game.boardGround("fondo1.jpg")
+	
+	//Musica
+	game.sound("amongUsTrap.wav")
 	
 	config.configurarTeclas()
 	
