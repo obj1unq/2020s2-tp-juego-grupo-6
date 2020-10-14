@@ -1,0 +1,33 @@
+*PLAYER
+ver si se puede animar y cambiar la imagen cuando camina
+
+implementar salto
+
+*CONFIG
+implementar gravedad
+tiempo de juego
+perder cuando se agota el tiempo
+pasar de nivel cuando matas y saboteas todo
+
+*GAME
+arreglar archivo de musica q no lo reconoce
+link del tema: https://www.youtube.com/watch?v=VStktuFjz60&ab_channel=TrapMusicHDTV
+
+crear mas NIVELES aumentando los numeros de enemigos, tareas de sabotaje
+
+*ENEMIGOS
+factory de enemigos
+randomizar colores de los enemigos creados, no se pueden repetir los colores
+que se muevan por el nivel
+animacion de caminar 
+
+*MISIONES
+ver si se puede cambiar el tamaño de imagen desde aca
+la imagen tiene que quedar atras del jugador y enemigo
+	
+reducir el tiempo de juego si esta arreglada -> podes perder si se agota todo el tiempo
+
+ 
+	
+
+

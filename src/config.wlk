@@ -15,4 +15,8 @@ object config {
 		game.onCollideDo( player, { algo => algo.teEncontro(player) })
 	}
 
+	// Tiempo de juego
+	
+	//gravedad
+	 
 }

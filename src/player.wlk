@@ -42,7 +42,16 @@ object player {
 	method esAtacado(danio){
 		vida -=10
 	}
+	
 	//cuando la vida es 0 debe perder
+	
+	method atacar(tripulante){
+		tripulante.esAsesinado()
+        //generadorTripulantes.removerTripulante(tripulante)
+        
+	}
+	
+	//implementar salto y plataformas para subirse
 	
 	
 }

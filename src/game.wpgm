@@ -2,13 +2,15 @@ import wollok.game.*
 import player.*
 import config.*
 import enemigos.*
+import misiones.*
 
 program UNQgame {
 	game.title("AmUNQ Us")
 	
 	//VISUALES
 	game.addVisual(player)
-	game.addVisualIn(new Tripulante(), game.at(3, 0))
+	game.addVisualIn(new Tripulante(), game.at(15, 0))
+	game.addVisualIn(passwordCode, game.at(8, 0))
 	
 	//CONFIGURACIONES
 	game.height(10)
