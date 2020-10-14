@@ -1,6 +1,6 @@
 *PLAYER
-Disparo
-Acuchillar
+Disparo (lejos del enemigo)
+Acuchillar (cerca del enemigo)
 Implementar se puede animar y cambiar la imagen cuando camina [2]
 
 *CONFIG
@@ -13,7 +13,6 @@ Cambio de perspectiva
 Paredes
 
 crear mas NIVELES aumentando los numeros de enemigos, tareas de sabotaje -> mas dificultad
-
 
 *ENEMIGOS
 factory de enemigos
