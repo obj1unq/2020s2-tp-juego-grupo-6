@@ -9,15 +9,15 @@ program UNQgame {
 	
 	//VISUALES
 	game.addVisual(player)
-	game.addVisualIn(new Tripulante(), game.at(15, 0))
-	game.addVisualIn(passwordCode, game.at(8, 0))
+	game.addVisualIn(new Tripulante(), game.at(8, 9))
+	game.addVisualIn(passwordCode, game.at(8, 11))
 	
 	//CONFIGURACIONES
-	game.height(10)
-	game.width(25)
+	game.height(12)
+	game.width(12)
 	
 	//Fondo
-	game.boardGround("fondo1.jpg")
+	game.boardGround("Cafeteria.png")
 	
 	//Musica
 	var audio = game.sound("amongUsTrap.wav")

@@ -16,7 +16,4 @@ object config {
 	}
 
 	// Tiempo de juego
-	
-	//gravedad
-	 
 }

@@ -5,7 +5,7 @@ import wollok.game.*
 object player {
 	
 	var property vida = 100
-	var property position = game.origin()
+	var property position = game.center()
 	
 	method image() {
 		return "idle.png"
