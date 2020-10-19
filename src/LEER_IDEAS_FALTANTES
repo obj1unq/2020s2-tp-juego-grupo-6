@@ -4,8 +4,6 @@ Acuchillar (cerca del enemigo)
 Implementar se puede animar y cambiar la imagen cuando camina [2]
 
 *CONFIG
-tiempo de juego
-perder cuando se agota el tiempo
 pasar de nivel cuando matas y saboteas todo
 
 *GAME
@@ -27,6 +25,9 @@ la imagen tiene que quedar atras del jugador y enemigo
 	
 reducir el tiempo de juego si esta arreglada -> podes perder si se agota todo el tiempo
 
+Escotillas para moverse dentro del juego (teletransportarse)
+
+Objetivos que hacen distintas cosas pero todas se sabotean con la misma tecla (polimorfismo)
  
 	
 
