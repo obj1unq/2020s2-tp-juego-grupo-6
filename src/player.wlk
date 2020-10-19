@@ -1,16 +1,10 @@
 import wollok.game.*
 
-
-
 object player {
 	
 	var property vida = 100
 	var property position = game.center()
-	
-	method image() {
-		return "idle.png"
-	}
-	
+	var property image = "idle.png"
 	
 	//Movimientos
 	method irASiSeMantieneEnLaPantalla(nuevaPosicion) {
@@ -41,6 +35,11 @@ object player {
 	
 	method esAtacado(danio){
 		vida -=10
+		if (vida == 0){
+			// implementar dejar de moverse con las teclas si muere (que se quede en el lugar)
+			self.image("dead.png")
+			self.perder()
+		}
 	}
 	
 	//cuando la vida es 0 debe perder
@@ -51,7 +50,9 @@ object player {
         
 	}
 	
-	//implementar salto y plataformas para subirse
-	
+	method perder() {
+		game.say(self, "Derrota")
+		game.schedule(3000, { game.stop() })
+	}
 	
 }

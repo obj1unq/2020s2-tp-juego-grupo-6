@@ -14,6 +14,8 @@ object config {
 	method configurarColisiones() {
 		game.onCollideDo( player, { algo => algo.teEncontro(player) })
 	}
-
-	// Tiempo de juego
+	method tiempoDeJuego(tiempo){
+		game.schedule(1000 * tiempo, { player.perder() })
+		game.say(player, "Tenés 1 minuto para sabotear la nave y matar a los tripulantes")
+	}
 }

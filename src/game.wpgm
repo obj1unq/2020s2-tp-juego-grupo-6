@@ -27,6 +27,8 @@ program UNQgame {
 	config.configurarTeclas()
 	config.configurarColisiones()
 	
+	config.tiempoDeJuego(60)
+	
 	//DEBUG
 	game.showAttributes(player)
 	
