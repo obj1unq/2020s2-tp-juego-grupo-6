@@ -9,6 +9,7 @@ object config {
 		keyboard.up().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().up(1)) })
 		keyboard.down().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().down(1)) })
 		
+		keyboard.a().onPressDo({ player.atacar(player.tripulanteColosionado()) })
 	}
 	
 	method configurarColisiones() {

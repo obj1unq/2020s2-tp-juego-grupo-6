@@ -36,22 +36,38 @@ object player {
 	method esAtacado(danio){
 		vida -=10
 		if (vida == 0){
-			// implementar dejar de moverse con las teclas si muere (que se quede en el lugar)
+			// implementar dejar de moverse con las teclas si muere (quedarse quieto en el lugar)
 			self.image("dead.png")
 			self.perder()
 		}
 	}
-	
-	//cuando la vida es 0 debe perder
-	
+		
 	method atacar(tripulante){
+		self.image("killAlien.png")
 		tripulante.esAsesinado()
+		self.image("idle.png")
         //generadorTripulantes.removerTripulante(tripulante)
-        
+	}
+	
+	method tripulanteColosionado() {
+		const tripulantes = game.colliders(self)
+		if (tripulantes.isEmpty()) {
+			self.error("no hay un tripulante")
+		}
+		return tripulantes.head()
 	}
 	
 	method perder() {
 		game.say(self, "Derrota")
+		self.finalizarJuego()
+	}
+	
+	method ganar() {
+		//si mate a todos los tripulantes y sabotee la nave
+		game.say(self, "Victoria")
+		self.finalizarJuego()
+	}
+	method finalizarJuego() {
 		game.schedule(3000, { game.stop() })
 	}
 	

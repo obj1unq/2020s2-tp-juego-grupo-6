@@ -3,8 +3,9 @@ import wollok.game.*
 class Tripulante {
 	
 	var property vida = 100
+	var property image = "tripulanteAmarillo.png"
 	
-	var property image = "tripulanteAmarillo.png" //randomizar los colores para mas adelante
+	//randomizar los colores para mas adelante
 	//ahora le puse un solo color para probarlo
 	//factory de enemigos
 	
@@ -18,8 +19,8 @@ class Tripulante {
 	}
 	
 	method esAsesinado(){
-		vida = 0
-		game.removeVisual(self)
+		self.image("dead.png")
+		vida = 0		
 	}
 	
 	// que caminen por el nivel
