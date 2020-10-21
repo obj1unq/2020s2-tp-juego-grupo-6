@@ -70,5 +70,5 @@ object player {
 	method finalizarJuego() {
 		game.schedule(3000, { game.stop() })
 	}
-	
+
 }

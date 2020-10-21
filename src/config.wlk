@@ -19,4 +19,10 @@ object config {
 		game.schedule(1000 * tiempo, { player.perder() })
 		game.say(player, "Tenés 1 minuto para sabotear la nave y matar a los tripulantes")
 	}
+	
+	method musica(){
+		const audio = game.sound("amongUsTrap.wav")
+		audio.shouldLoop(true)
+		game.schedule(500, { => audio.play() })
+	}
 }

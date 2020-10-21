@@ -20,9 +20,7 @@ program UNQgame {
 	game.boardGround("Cafeteria.png")
 	
 	//Musica
-	var audio = game.sound("amongUsTrap.wav")
-	audio.shouldLoop(true)
-	game.schedule(500, { => audio.play() })
+	config.musica()
 	
 	config.configurarTeclas()
 	config.configurarColisiones()
