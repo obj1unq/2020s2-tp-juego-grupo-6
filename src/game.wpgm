@@ -20,12 +20,8 @@ program UNQgame {
 	game.boardGround("bg.png")
 	
 	//Musica
-	config.musica()
+	nivel1.iniciar()
 	
-	config.configurarTeclas()
-	config.configurarColisiones()
-	
-	config.tiempoDeJuego(60)
 	
 	//DEBUG
 	game.showAttributes(player)

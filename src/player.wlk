@@ -1,9 +1,10 @@
 import wollok.game.*
+import paredes.*
 
 object player {
 	
 	var property vida = 100
-	var property position = game.center()
+	var property position = game.origin()
 	var property image = "idle.png"
 	
 	//Movimientos
@@ -17,6 +18,7 @@ object player {
 		// Precondiciones
 		self.validarParaMoverse(nuevaPosicion)
 		// Acción
+		if (not game.colliders(new Pared()).isEmpty())
 		position = nuevaPosicion
 		// Postcondiciones
 		//self.checkearSiTerminoElJuego()

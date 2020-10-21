@@ -1,5 +1,23 @@
 import wollok.game.*
 import player.*
+import paredes.*
+
+object nivel1 {
+	method iniciar() {
+		game.addVisualIn(new Pared(), game.at(2,1))
+		game.addVisualIn(new Pared(), game.at(2,2))
+		game.addVisualIn(new Pared(), game.at(3,2))
+		game.addVisualIn(new Pared(), game.at(3,3))
+		config.musica()
+	
+	    config.configurarTeclas()
+	config.configurarColisiones()
+	
+	config.tiempoDeJuego(60)
+	}
+	
+	
+}
 
 object config {
 
