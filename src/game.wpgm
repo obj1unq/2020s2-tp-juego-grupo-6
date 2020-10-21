@@ -17,7 +17,7 @@ program UNQgame {
 	game.width(12)
 	
 	//Fondo
-	game.boardGround("Cafeteria.png")
+	game.boardGround("bg.png")
 	
 	//Musica
 	config.musica()
