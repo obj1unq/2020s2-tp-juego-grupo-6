@@ -25,4 +25,5 @@ class Tripulante {
 	
 	// que caminen por el nivel
 	
+	
 }
