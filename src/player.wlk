@@ -18,7 +18,7 @@ object player {
 		// Precondiciones
 		self.validarParaMoverse(nuevaPosicion)
 		// Acción
-		if (not game.colliders(new Pared()).isEmpty())
+		if (game.getObjectsIn(nuevaPosicion).isEmpty())
 		position = nuevaPosicion
 		// Postcondiciones
 		//self.checkearSiTerminoElJuego()
