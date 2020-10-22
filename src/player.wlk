@@ -18,6 +18,7 @@ object player {
 		// Precondiciones
 		self.validarParaMoverse(nuevaPosicion)
 		// Acción
+		//if (objeto.teDejaPasar())
 		if (game.getObjectsIn(nuevaPosicion).isEmpty())
 		position = nuevaPosicion
 		// Postcondiciones
