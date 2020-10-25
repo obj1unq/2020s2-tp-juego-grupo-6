@@ -11,8 +11,11 @@ object passwordCode {
 	
 	//reduce el tiempo de juego si esta arreglada y podes perder
 	
-	method arreglar(){
+	method sabotear(jugador){
 		//deja de restar tiempo
+		jugador.sabotaje()
 	}
+	method teEncontro(jugador) {}
 	
+	method teDejaPasar(jugador) {return true}
 }

@@ -25,5 +25,6 @@ class Tripulante {
 	
 	// que caminen por el nivel
 	
+	method teDejaPasar(jugador) {return true}
 	
 }

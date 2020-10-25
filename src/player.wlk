@@ -1,5 +1,7 @@
 import wollok.game.*
 import paredes.*
+import enemigos.*
+import misiones.*
 
 object player {
 	
@@ -18,8 +20,7 @@ object player {
 		// Precondiciones
 		self.validarParaMoverse(nuevaPosicion)
 		// Acción
-		//if (objeto.teDejaPasar())
-		if (game.getObjectsIn(nuevaPosicion).isEmpty())
+		if (self.paredColisionada(nuevaPosicion).isEmpty())
 		position = nuevaPosicion
 		// Postcondiciones
 		//self.checkearSiTerminoElJuego()
@@ -72,6 +73,14 @@ object player {
 	}
 	method finalizarJuego() {
 		game.schedule(3000, { game.stop() })
+	}
+	
+	method sabotaje() {}
+	
+	method paredColisionada(nuevaPosicion) {
+		const paredes = game.getObjectsIn(nuevaPosicion)
+		return paredes.filter( {pared => not pared.teDejaPasar(self)} )
+		
 	}
 
 }
