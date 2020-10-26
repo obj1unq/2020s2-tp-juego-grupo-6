@@ -9,6 +9,8 @@ object player {
 	var property position = game.origin()
 	var property image = "idle.png"
 	
+	
+	
 	//Movimientos
 	method irASiSeMantieneEnLaPantalla(nuevaPosicion) {
 		if (self.estaDentroDeLaPantalla(nuevaPosicion)) {
@@ -82,5 +84,46 @@ object player {
 		return paredes.filter( {pared => not pared.teDejaPasar(self)} )
 		
 	}
+	
+	method sabotear(){
+		if (self.hayMisionCerca()) {
+			passwordCode.serSaboteada()
+		} else {
+			self.error("no hay mision cerca")
+		}
+	}
+	
+	method hayMisionCerca(){
+		return  self.existeMisionArriba() or
+				self.existeMisionAbajo() or 
+				self.existeMisionDerecha() or
+				self.existeMisionIzquierda()
+		}
+		
+		
+	method existeMisionArriba(){
+		return game.getObjectsIn(self.position().up(1)).any({ i => i.image() == "passwordCode.png"})
+	} 
+	
+	method existeMisionAbajo(){
+		return game.getObjectsIn(self.position().down(1)).any({ i => i.image() == "passwordCode.png"})
+	} 
+	
+	method existeMisionDerecha(){
+		return game.getObjectsIn(self.position().right(1)).any({ i => i.image() == "passwordCode.png"})
+	} 
+	
+	method existeMisionIzquierda(){
+		return game.getObjectsIn(self.position().left(1)).any({ i => i.image() == "passwordCode.png"})
+	} 
+	
 
+	
 }
+
+
+
+
+
+
+
