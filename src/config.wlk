@@ -1,10 +1,11 @@
 import wollok.game.*
 import player.*
 import paredes.*
+import misiones.*
 
 object nivel1 {
 	method iniciar() {
-		game.addVisualIn(new Pared(), game.at(2,1))
+		//game.addVisualIn(new Pared(), game.at(2,1))
 		game.addVisualIn(new Pared(), game.at(2,2))
 		game.addVisualIn(new Pared(), game.at(3,2))
 		game.addVisualIn(new Pared(), game.at(3,3))
@@ -22,7 +23,7 @@ object nivel1 {
 object config {
 	var property tiempoDeJuego = 1000
 		
-	method configurarTeclas() {
+	method configurarTeclas() { //rompe encapsulamiento
 		keyboard.left().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().left(1)) })
 		keyboard.right().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().right(1)) })
 		keyboard.up().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().up(1)) })
