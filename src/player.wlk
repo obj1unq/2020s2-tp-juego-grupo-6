@@ -115,22 +115,22 @@ object player {
 	}
 	
 	method getMisionArriba(){
-		return game.getObjectsIn(self.position().up(1)).find({ i => i.image() == "passwordCodeDefault.png" or  i.image() == "cablesDefault.png"})
+		return game.getObjectsIn(self.posicionSuperior()).find(self.dameLaMision())
 
 	}
 
 	method getMisionAbajo(){
-		return game.getObjectsIn(self.position().down(1)).find({ i => i.image() == "passwordCodeDefault.png" or  i.image() == "cablesDefault.png"})
+		return game.getObjectsIn(self.posicionInferior()).find(self.dameLaMision())
 
 	}
 	
 	method getMisionDerecha(){
-		return game.getObjectsIn(self.position().right(1)).find({ i => i.image() == "passwordCodeDefault.png" or  i.image() == "cablesDefault.png"})
+		return game.getObjectsIn(self.posicionALaDerecha()).find(self.dameLaMision())
 
 	}
 	
 	method getMisionIzquierda(){
-		return game.getObjectsIn(self.position().left(1)).find({ i => i.image() == "passwordCodeDefault.png" or  i.image() == "cablesDefault.png"})
+		return game.getObjectsIn(self.posicionALaIzquierda()).find(self.dameLaMision())
 
 	}
 	
@@ -138,22 +138,43 @@ object player {
 	
 		
 	method existeMisionArriba(){
-		return game.getObjectsIn(self.position().up(1)).any({ i => i.image() == "passwordCodeDefault.png" or  i.image() == "cablesDefault.png"})
+		return game.getObjectsIn(self.posicionSuperior()).any(self.dameLaMision())
 	} 
 	
 	method existeMisionAbajo(){
-		return game.getObjectsIn(self.position().down(1)).any({ i => i.image() == "passwordCodeDefault.png" or  i.image() == "cablesDefault.png"})
+		return game.getObjectsIn(self.posicionInferior()).any(self.dameLaMision())
 	} 
 	
 	method existeMisionDerecha(){
-		return game.getObjectsIn(self.position().right(1)).any({ i => i.image() == "passwordCodeDefault.png" or  i.image() == "cablesDefault.png"})
+		return game.getObjectsIn(self.posicionALaDerecha()).any(self.dameLaMision())
 	} 
 	
 	method existeMisionIzquierda(){
-		return game.getObjectsIn(self.position().left(1)).any({ i => i.image() == "passwordCodeDefault.png" or  i.image() == "cablesDefault.png"})
+		return game.getObjectsIn(self.posicionALaIzquierda()).any(self.dameLaMision())
 	} 
 	
 
+
+	
+	method dameLaMision(){
+		return ({ i => i.image() == "passwordCodeDefault.png" or  i.image() == "cablesDefault.png"})
+	}
+	
+	method posicionSuperior(){
+		return self.position().up(1)
+	}
+	
+	method posicionInferior(){
+		return self.position().down(1)
+	}
+	
+	method posicionALaDerecha(){
+		return self.position().right(1)
+	}
+	
+	method posicionALaIzquierda(){
+		return self.position().left(1)
+	}
 	
 }
 
