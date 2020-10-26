@@ -1,11 +1,9 @@
 import config.*
 
-class Mision{
-				
+class Mision{	
 		method serSaboteada()
-		
-			
-	
+		method teDejaPasar(jugador) = true	
+		method teEncontro(player) {}				
 }
 
 
