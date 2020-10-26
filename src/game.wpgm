@@ -10,13 +10,15 @@ program UNQgame {
 	//VISUALES
 	game.addVisual(player)
 	game.addVisualIn(passwordCode, game.at(8, 11))
+	game.addVisualIn(cableado, game.at(2, 11))
+	
 	
 	//CONFIGURACIONES
 	game.height(12)
 	game.width(12)
 	
 	//Fondo
-	game.boardGround("bg.png")
+	game.boardGround("fondoAmongUs.png")
 	
 	//Musica
 	nivel1.iniciar()

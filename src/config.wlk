@@ -1,6 +1,7 @@
 import wollok.game.*
 import player.*
 import paredes.*
+
 import enemigos.*
 
 object nivel1 {
@@ -8,6 +9,10 @@ object nivel1 {
 		game.addVisualIn(new Pared(), game.at(1,0))
 		game.addVisualIn(new Pared(), game.at(2,0))
 		game.addVisualIn(new Pared(), game.at(1,2))
+
+import misiones.*
+
+
 		game.addVisualIn(new Pared(), game.at(2,2))
 		game.addVisualIn(new Pared(), game.at(3,0))
 		game.addVisualIn(new Pared(), game.at(4,0))
@@ -63,29 +68,33 @@ object nivel1 {
 		game.onTick(2000, "Enemigo se mueve", {=> tripulante1.caminar() })
 		config.musica()					
 	    config.configurarTeclas()
+
     	config.configurarColisiones()
     	config.tiempoDeJuego(60)
+
 	}
 	
 	
 }
 
 object config {
-
-	method configurarTeclas() {
+	var property tiempoDeJuego = 1000
+		
+	method configurarTeclas() { //rompe encapsulamiento
 		keyboard.left().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().left(1)) })
 		keyboard.right().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().right(1)) })
 		keyboard.up().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().up(1)) })
 		keyboard.down().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().down(1)) })
 		
-		keyboard.a().onPressDo({ player.atacar(player.tripulanteColosionado()) })
+		keyboard.a().onPressDo({player.atacar(player.tripulanteColosionado()) })
+		keyboard.s().onPressDo({player.sabotear()})
 	}
 	
 	method configurarColisiones() {
 		game.onCollideDo( player, { algo => algo.teEncontro(player) })
 	}
 	method tiempoDeJuego(tiempo){
-		game.schedule(1000 * tiempo, { player.perder() })
+		game.schedule(tiempoDeJuego * tiempo, { player.perder() })
 		game.say(player, "Tenés 1 minuto para sabotear la nave y matar a los tripulantes")
 	}
 	
@@ -93,5 +102,9 @@ object config {
 		const audio = game.sound("amongUsTrap.wav")
 		audio.shouldLoop(true)
 		game.schedule(500, { => audio.play() })
+	}
+	
+	method agregarTiempoDeJuego(){
+		tiempoDeJuego += 500
 	}
 }
