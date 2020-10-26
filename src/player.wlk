@@ -82,5 +82,9 @@ object player {
 		return paredes.filter( {pared => not pared.teDejaPasar(self)} )
 		
 	}
+	
+	method teDejaPasar(jugador){
+		return true
+	}
 
 }
