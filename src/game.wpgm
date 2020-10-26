@@ -9,7 +9,6 @@ program UNQgame {
 	
 	//VISUALES
 	game.addVisual(player)
-	game.addVisualIn(new Tripulante(), game.at(8, 9))
 	game.addVisualIn(passwordCode, game.at(8, 11))
 	game.addVisualIn(cableado, game.at(2, 11))
 	

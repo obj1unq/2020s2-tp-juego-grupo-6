@@ -86,6 +86,13 @@ object player {
 		
 	}
 	
+
+	method teDejaPasar(jugador){
+		return true
+	}
+
+}
+
 	method sabotear(){
 		if (self.hayMisionCerca()) {
 			self.getMisionCerca().serSaboteada()
@@ -177,6 +184,7 @@ object player {
 	}
 	
 }
+
 
 
 
