@@ -64,6 +64,7 @@ object player {
 	}
 	
 	method perder() {
+		if (self.vida() == 0)
 		game.say(self, "Derrota")
 		self.finalizarJuego()
 	}

@@ -5,11 +5,14 @@ class Tripulante {
 	var property vida = 100
 	var property image = "tripulanteAmarillo.png"
 	var property position
+	var muerto = false
 	
 	
 	//randomizar los colores para mas adelante
 	//ahora le puse un solo color para probarlo
 	//factory de enemigos
+	
+	method murio() {return muerto}
 	
 	method teEncontro(player) {
 		self.atacar(player)
@@ -23,7 +26,10 @@ class Tripulante {
 	method esAsesinado(){
 		self.image("dead.png")
 		vida = 0		
+		muerto = true
 	}
+	
+	
 	
 	method teDejaPasar(jugador) {return true}
 	

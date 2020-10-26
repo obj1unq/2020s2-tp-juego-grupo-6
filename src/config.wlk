@@ -18,9 +18,13 @@ object nivel1 {
 		game.onTick(1000, "Enemigo se mueve", {=> tripulante3.caminar() })
 		//config.musica()					
 	    config.configurarTeclas()
-
     	config.configurarColisiones()
     	config.tiempoDeJuego(60)
+    	if (tripulante1.vida() == 0
+    	and tripulante2.vida() == 0
+    	and tripulante3.vida() == 0)
+    	{player.ganar()}	
+    	
 
 	}
 	

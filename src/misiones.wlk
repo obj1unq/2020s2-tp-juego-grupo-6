@@ -1,18 +1,19 @@
 import config.*
 
-class Mision{	
+class Mision{
+	    
+	    	
 		method serSaboteada()
 		method teDejaPasar(jugador) = true	
-		method teEncontro(player) {}				
+		method teEncontro(player) {}
+						
 }
 
 
 
-object passwordCode inherits Mision {
-	
-//	var property saboteada = false
-	
+object passwordCode inherits Mision {	
 	var property image = "passwordCodeDefault.png"
+	var property fueSaboteada = false
 	
 	
 	//ver si se puede cambiar el tamaño desde aca
@@ -26,26 +27,27 @@ object passwordCode inherits Mision {
 //		jugador.sabotaje()
 //	}
 	
-	//method teEncontro(jugador) {}
-	
-	//method teDejaPasar(jugador) {return true}
 	
 	
 	override method serSaboteada(){
 	 	image = "passwordRedCode.png"
 	 	config.agregarTiempoDeJuego()
-	}		
-
+	 	fueSaboteada = true	
+	 	}
+	 	
+	 	
 } 
 	
 object cableado inherits Mision {
-	
+	var property fueSaboteada = false
 	var property image = "cablesDefault.png"
 	
 		override method serSaboteada(){
 	 	image = "cablesSaboteados.png"
 	 	config.agregarTiempoDeJuego()
+	 	fueSaboteada = true
 	}	
+	
 }
 	
 
