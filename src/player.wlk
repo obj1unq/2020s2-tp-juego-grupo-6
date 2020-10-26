@@ -78,7 +78,7 @@ object player {
 		game.schedule(3000, { game.stop() })
 	}
 	
-	method sabotaje() {}
+	
 	
 	method paredColisionada(nuevaPosicion) {
 		const paredes = game.getObjectsIn(nuevaPosicion)
@@ -91,7 +91,7 @@ object player {
 		return true
 	}
 
-}
+
 
 	method sabotear(){
 		if (self.hayMisionCerca()) {

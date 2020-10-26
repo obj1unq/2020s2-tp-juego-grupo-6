@@ -1,7 +1,7 @@
 import wollok.game.*
 import player.*
 import paredes.*
-
+import misiones.*
 import enemigos.*
 
 object nivel1 {
@@ -9,10 +9,6 @@ object nivel1 {
 		game.addVisualIn(new Pared(), game.at(1,0))
 		game.addVisualIn(new Pared(), game.at(2,0))
 		game.addVisualIn(new Pared(), game.at(1,2))
-
-import misiones.*
-
-
 		game.addVisualIn(new Pared(), game.at(2,2))
 		game.addVisualIn(new Pared(), game.at(3,0))
 		game.addVisualIn(new Pared(), game.at(4,0))
