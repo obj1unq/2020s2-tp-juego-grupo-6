@@ -24,7 +24,7 @@ class Tripulante {
 	}
 	
 	method esAsesinado(){
-		self.image("dead.png")
+		self.image("deadAmarillo.png")
 		vida = 0		
 		muerto = true
 	}
