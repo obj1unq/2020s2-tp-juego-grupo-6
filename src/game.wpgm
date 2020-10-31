@@ -3,6 +3,7 @@ import player.*
 import config.*
 import enemigos.*
 import misiones.*
+import nave.*
 
 program UNQgame {
 	game.title("AmUNQ Us")

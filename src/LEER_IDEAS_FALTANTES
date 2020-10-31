@@ -29,6 +29,10 @@ Escotillas para moverse dentro del juego (teletransportarse)
 
 Objetivos que hacen distintas cosas pero todas se sabotean con la misma tecla (polimorfismo)
  
+ *NIVEL
+ 
+ Implementar el generador de paredes para que el archivo config no sea un choclo
+ agregar escotilla para teletransportarse en el mapa
 	
 
 
