@@ -25,9 +25,13 @@ class Tripulante {
 		player.esAtacado(10)
 	}
 
-	method esAsesinado() {
-		self.image("dead.png")
-		vida = 0
+
+	
+	method esAsesinado(){
+		self.image("deadAmarillo.png")
+		vida = 0		
+		
+
 	}
 
 	method teDejaPasar(jugador) {
