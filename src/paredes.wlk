@@ -1,5 +1,5 @@
 class Pared {
 	method image()= "m-001.jpg"
-	method teEncontro(jugador) {return self.teDejaPasar(jugador)}
-	method teDejaPasar(jugador) {return false}
+	method teEncontro(jugador) {return self.teDejaPasar()}
+	method teDejaPasar() {return false}
 }

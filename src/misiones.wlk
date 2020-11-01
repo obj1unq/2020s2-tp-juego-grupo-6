@@ -4,7 +4,7 @@ class Mision {
 
 	method serSaboteada()
 
-	method teDejaPasar(jugador) = true
+	method teDejaPasar() = true
 
 	method teEncontro(player) {
 	}

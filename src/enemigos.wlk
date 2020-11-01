@@ -34,7 +34,7 @@ class Tripulante {
 
 	}
 
-	method teDejaPasar(jugador) {
+	method teDejaPasar() {
 		return true
 	}
 
@@ -45,7 +45,7 @@ class Tripulante {
 
 	method paredColisionada(nuevaPosicion) {
 		const paredes = game.getObjectsIn(nuevaPosicion)
-		return paredes.any({ pared => not pared.teDejaPasar(self) })
+		return paredes.any({ pared => not pared.teDejaPasar() })
 	}
 
 	method caminar(direccion) {
