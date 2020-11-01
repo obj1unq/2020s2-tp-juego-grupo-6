@@ -31,6 +31,14 @@ object nivel1 {
 
 object config {
 
+    const property posiciones = [
+        [1, 0], [1, 2], [1, 6], [1, 8], [2, 0], [2, 2], [2, 6], [2, 8], [2, 9], [2, 10], [3, 0],
+        [3, 2], [3, 6], [4, 0], [4, 2], [4, 6], [4, 8], [4, 9], [4, 10], [5, 0], [5, 2], [5, 6],
+        [5, 8], [6, 0], [6, 2], [6, 3], [6, 4], [6, 6], [6, 8], [6, 9], [6, 10], [6, 11], [7, 0],
+        [7, 4], [7, 6], [8, 0], [8, 1], [8, 3], [8, 4], [8, 5], [8, 6], [8, 6], [8, 7], [8, 8],
+        [8, 9], [9, 6], [10, 4], [10, 6], [11, 6]
+    ]
+
 	var property tiempoDeJuego = 1000
 
 	method configurarTeclas() { // rompe encapsulamiento
@@ -62,56 +70,11 @@ object config {
 	}
 
 	method agregarParedes() {
-		game.addVisualIn(new Pared(), game.at(1, 0))
-		game.addVisualIn(new Pared(), game.at(2, 0))
-		game.addVisualIn(new Pared(), game.at(1, 2))
-		game.addVisualIn(new Pared(), game.at(2, 2))
-		game.addVisualIn(new Pared(), game.at(3, 0))
-		game.addVisualIn(new Pared(), game.at(4, 0))
-		game.addVisualIn(new Pared(), game.at(5, 0))
-		game.addVisualIn(new Pared(), game.at(6, 0))
-		game.addVisualIn(new Pared(), game.at(3, 2))
-		game.addVisualIn(new Pared(), game.at(4, 2))
-		game.addVisualIn(new Pared(), game.at(5, 2))
-		game.addVisualIn(new Pared(), game.at(6, 2))
-		game.addVisualIn(new Pared(), game.at(7, 0))
-		game.addVisualIn(new Pared(), game.at(8, 0))
-		game.addVisualIn(new Pared(), game.at(6, 3))
-		game.addVisualIn(new Pared(), game.at(6, 4))
-		game.addVisualIn(new Pared(), game.at(6, 6))
-		game.addVisualIn(new Pared(), game.at(6, 8))
-		game.addVisualIn(new Pared(), game.at(6, 9))
-		game.addVisualIn(new Pared(), game.at(8, 1))
-		game.addVisualIn(new Pared(), game.at(8, 3))
-		game.addVisualIn(new Pared(), game.at(8, 4))
-		game.addVisualIn(new Pared(), game.at(8, 5))
-		game.addVisualIn(new Pared(), game.at(8, 6))
-		game.addVisualIn(new Pared(), game.at(8, 7))
-		game.addVisualIn(new Pared(), game.at(8, 8))
-		game.addVisualIn(new Pared(), game.at(8, 9))
-		game.addVisualIn(new Pared(), game.at(6, 10))
-		game.addVisualIn(new Pared(), game.at(6, 11))
-		game.addVisualIn(new Pared(), game.at(5, 6))
-		game.addVisualIn(new Pared(), game.at(4, 6))
-		game.addVisualIn(new Pared(), game.at(3, 6))
-		game.addVisualIn(new Pared(), game.at(2, 6))
-		game.addVisualIn(new Pared(), game.at(1, 6))
-		game.addVisualIn(new Pared(), game.at(5, 8))
-		game.addVisualIn(new Pared(), game.at(4, 8))
-		game.addVisualIn(new Pared(), game.at(2, 8))
-		game.addVisualIn(new Pared(), game.at(1, 8))
-		game.addVisualIn(new Pared(), game.at(4, 9))
-		game.addVisualIn(new Pared(), game.at(4, 10))
-		game.addVisualIn(new Pared(), game.at(2, 9))
-		game.addVisualIn(new Pared(), game.at(2, 10))
-		game.addVisualIn(new Pared(), game.at(7, 4))
-		game.addVisualIn(new Pared(), game.at(8, 4))
-		game.addVisualIn(new Pared(), game.at(10, 4))
-		game.addVisualIn(new Pared(), game.at(7, 6))
-		game.addVisualIn(new Pared(), game.at(8, 6))
-		game.addVisualIn(new Pared(), game.at(9, 6))
-		game.addVisualIn(new Pared(), game.at(10, 6))
-		game.addVisualIn(new Pared(), game.at(11, 6))
+        posiciones.forEach {
+            posicion =>
+                const ubicacion = new Position(x=posicion.get(0), y=posicion.get(1))
+                game.addVisualIn(new Pared(), ubicacion)
+        }
 	}
 
 }
