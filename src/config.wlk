@@ -70,11 +70,11 @@ object config {
 	}
 
 	method agregarParedes() {
-        posiciones.forEach {
-            posicion =>
-                const ubicacion = new Position(x=posicion.get(0), y=posicion.get(1))
-                game.addVisualIn(new Pared(), ubicacion)
-        }
+		posiciones.forEach {
+			posicion =>
+				const ubicacion = new Position(x=posicion.get(0), y=posicion.get(1))
+				game.addVisualIn(new Pared(), ubicacion)
+		}
 	}
 
 }
