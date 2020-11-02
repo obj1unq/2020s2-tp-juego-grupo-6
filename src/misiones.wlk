@@ -1,4 +1,5 @@
 import config.*
+import nave.*
 
 class Mision {
 
@@ -8,6 +9,10 @@ class Mision {
 
 	method teEncontro(player) {
 	}
+	
+	override method initialize() {
+		nave.agregarSabojate(self)
+	}
 
 }
 
@@ -16,17 +21,17 @@ object passwordCode inherits Mision {
 	var property image = "passwordCodeDefault.png"
 	var property fueSaboteada = false
 
-	// ver si se puede cambiar el tamaño desde aca
-	// la imagen tiene que quedar atras del jugador y enemigo
-	// reduce el tiempo de juego si esta arreglada y podes perder
-//	method sabotear(jugador){
+
+	//	method sabotear(jugador){
 	// deja de restar tiempo
-//		jugador.sabotaje()
-//	}
+	//		jugador.sabotaje()
+	//	}
+	
 	override method serSaboteada() {
 		image = "passwordRedCode.png"
-		config.agregarTiempoDeJuego()
+		config.agregarTiempoDeJuego(30)
 		fueSaboteada = true
+		nave.sabotajesRestantes().remove(self)
 	}
 
 }
@@ -38,9 +43,12 @@ object cableado inherits Mision {
 
 	override method serSaboteada() {
 		image = "cablesSaboteados.png"
-		config.agregarTiempoDeJuego()
+		config.agregarTiempoDeJuego(20)
 		fueSaboteada = true
+		nave.sabotajesRestantes().remove(self)
 	}
+	
+	
 
 }
 

@@ -37,7 +37,7 @@ object player {
 	}
 
 	method esAtacado(danio) {
-		vida -= 10
+		vida -= 10	
 		if (vida == 0) {
 			// implementar dejar de moverse con las teclas si muere (quedarse quieto en el lugar)
 			self.image("dead.png")
@@ -46,20 +46,14 @@ object player {
 	}
 
 	method atacar(tripulante) {
-		self.image("killAlien.png")
 		tripulante.esAsesinado()
-		self.image("idle.png")
 		nave.enemigosRestantes().remove(tripulante)
-	// generadorTripulantes.removerTripulante(tripulante)
-	// checkear si gane
-	    if (nave.sinTripulantes())
-	    self.ganar()
 	}
 
 	method tripulanteColosionado() {
 		const tripulantes = game.colliders(self)
 		if (tripulantes.isEmpty()) {
-			self.error("no hay un tripulante")
+			self.error("No hay un tripulante")
 		}
 		return tripulantes.head()
 	}
@@ -70,10 +64,10 @@ object player {
 	}
 
 	method ganar() {
-		// si mate a todos los tripulantes y sabotee la nave
+		if (nave.sinTripulantes() && nave.sinSabotajes() && nave.esElUltimoNivel()){
 		game.say(self, "Victoria")
 		self.finalizarJuego()
-		
+		}
 	}
 
 	method finalizarJuego() {
@@ -93,7 +87,7 @@ object player {
 		if (self.hayMisionCerca()) {
 			self.getMisionCerca().serSaboteada()
 		} else {
-			self.error("no hay mision cerca")
+			self.error("No hay una mision")
 		}
 	}
 
@@ -146,7 +140,7 @@ object player {
 	}
 
 	method dameLaMision() {
-		return ({ i => i.image() == "passwordCodeDefault.png" or i.image() == "cablesDefault.png" })
+		return ({ i => i.image() == "passwordCodeDefault.png" or i.image() == "cablesDefault.png" or i.image() == "escotilla.png"})
 	}
 
 	method posicionSuperior() {

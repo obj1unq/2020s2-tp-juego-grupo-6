@@ -75,14 +75,15 @@ object config {
     //]
 
 	var property tiempoDeJuego = 1000
-
+	
+	//TECLAS
 	method configurarTeclas() { // rompe encapsulamiento
 		keyboard.left().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().left(1))})
 		keyboard.right().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().right(1))})
 		keyboard.up().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().up(1))})
 		keyboard.down().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().down(1))})
 		keyboard.a().onPressDo({player.saboteaOAsesina()})
-
+		
 	}
 
 	method configurarColisiones() {
@@ -100,8 +101,8 @@ object config {
 		game.schedule(500, { => audio.play()})
 	}
 
-	method agregarTiempoDeJuego() {
-		tiempoDeJuego += 500
+	method agregarTiempoDeJuego(tiempo) {
+		tiempoDeJuego += tiempo
 	}
 //ernesto
 	//method agregarParedes() {
@@ -138,4 +139,21 @@ object tripulantesFactory {
 		}
 		
 	}	
+}
+
+object nivel2{
+	
+	method iniciar() {
+		game.clear()
+		//cambiar el fondo a otro nivel
+		config.configurarTeclas()
+		game.addVisual(player)
+		config.configurarColisiones()
+		generadorTripulantes.nuevoTripulante(5)					
+		config.configurarColisiones()
+		config.tiempoDeJuego(60)
+	}
+	
+	
+	
 }

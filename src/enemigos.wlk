@@ -14,7 +14,9 @@ class Tripulante {
 	method moverseRandom() {return direcciones.anyOne()}
 
 	method teEncontro(player) {
-		self.atacar(player)
+		if (self.vida() > 0){
+			self.atacar(player)	
+		}
 	}
 
 	method atacar(player) {

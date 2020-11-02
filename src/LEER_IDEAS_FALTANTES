@@ -3,31 +3,35 @@ Disparo (lejos del enemigo)
 Acuchillar (cerca del enemigo)
 Implementar se puede animar y cambiar la imagen cuando camina [2]
 
+
+Cuando colisionamos con el enemigo para matarlo este nos saca vida,
+esto no seria ideal ya que en un momento si matas a 10 enemigos perdes toda la vida
+
+una opcion q se me ocurre es que una de las misiones nos sume vida cuando la saboteamos
+
+o sacarle el metodo para que el enemigo no te reste vida 
+y que las misiones por cada frame te saquen vida por no estar saboteadas
+
 *CONFIG
-pasar de nivel cuando matas y saboteas todo
+
 
 *GAME
-Cambio de perspectiva
-Paredes ya puestas segun el fondo del mapa y codigo principal que teniamos(igualmente estan los dos codigos para ver cual terminamos eligiendo)
 
 crear mas NIVELES aumentando los numeros de enemigos, tareas de sabotaje -> mas dificultad
 
 *ENEMIGOS
-factory de enemigos
-randomizar colores de los enemigos creados, no se pueden repetir los colores
 
-Movimientos del enemigo
 animacion de caminar 
 
 *MISIONES
-ver si se puede cambiar el tamaño de imagen desde aca
+
 la imagen tiene que quedar atras del jugador y enemigo
 	
 reducir el tiempo de juego si esta arreglada -> podes perder si se agota todo el tiempo
 
-Escotillas para moverse dentro del juego (teletransportarse)
-(falta hacer que el enemigo(Tripulante) se meta a la escotilla para ir al siguiente mapa)
 
+POLIMORFISMO
+el metodo sabotear y atacar se podrian llamar interacutar y estar en los objetos de enemigo misiones y escotillas
   
  
 
