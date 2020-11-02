@@ -1,7 +1,10 @@
 import wollok.game.*
 
 object randomizer {
-		
+	
+	const colores = ["tripulanteAmarillo.png", "tRojo.png",  "tNegro.png",  "tVerde.png", "tNaranja.png"]
+	var posicionColorActual = 0
+	
 	method position() {
 		return 	game.at( 
 					(0 .. game.width() - 1 ).anyOne(),
@@ -19,4 +22,22 @@ object randomizer {
 		}
 	}
 	
+	/*method image() {
+		const colores = ["tripulanteAmarillo.png", "tRojo.png", "tNaranja.png",  "tNegro.png",  "tVerde.png"]
+		return 	colores.anyOne()
+	}//se repiten los colores*/
+	
+	method image() {
+		
+		return 	colores.get(posicionColorActual)
+	}
+	
+	method color(){
+		posicionColorActual = (posicionColorActual + 1) % colores.size()
+	}
+	
+	method imageRandom(){
+		self.color()
+		return colores.get(posicionColorActual)
+	}
 }

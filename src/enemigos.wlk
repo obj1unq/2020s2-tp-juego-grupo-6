@@ -3,7 +3,7 @@ import wollok.game.*
 class Tripulante {
 
 	var property vida = 100
-	var property image = "tripulanteAmarillo.png"
+	var property image
 	var property position
     const property direcciones = [arriba, abajo, izquierda, derecha]
 
@@ -25,12 +25,24 @@ class Tripulante {
 
 	
 	method esAsesinado(){
-		self.image("deadAmarillo.png")
+		self.colorMuerto()
 		vida = 0		
-		
+
 
 	}
-
+	method colorMuerto(){
+		if (self.image() == "tripulanteAmarillo.png"){
+			self.image("deadAmarillo.png")
+		} else if (self.image() == "tRojo.png"){
+			self.image("deadRojo.png")
+		} else if (self.image() == "tNegro.png"){
+			self.image("deadNegro.png")
+		} else if (self.image() == "tVerde.png"){
+			self.image("deadVerde.png")
+		} else if (self.image() == "tNaranja.png"){
+			self.image("deadNaranja.png")}
+			
+	}
 	method teDejaPasar() {
 		return true
 	}

@@ -117,7 +117,9 @@ object config {
 object tripulantesFactory {
    
    method spawnearTripulante() {
-   		return new Tripulante(position = randomizer.emptyPosition())
+   		return new Tripulante(position = randomizer.emptyPosition(),
+   								image = randomizer.imageRandom()
+   		)
    }
   
 }
