@@ -7,9 +7,6 @@ class Tripulante {
 	var property position
     const property direcciones = [arriba, abajo, izquierda, derecha]
 
-	// randomizar los colores para mas adelante
-	// ahora le puse un solo color para probarlo
-	// factory de enemigos
 	method muerto() {
 		return vida == 0
 	}

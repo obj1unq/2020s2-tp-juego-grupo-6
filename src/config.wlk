@@ -5,7 +5,7 @@ import misiones.*
 import enemigos.*
 import nave.*
 import escotilla.*
-
+import randomizer.*
 
 object nivel1 {
 	
@@ -55,20 +55,9 @@ object nivel1 {
 		game.addVisualIn(new Escotilla(), game.at(3,5))
 		
 		
-		const tripulante1 = new Tripulante(position = game.at(8, 9))
-		game.addVisual(tripulante1)
-		nave.agregarEnemigo(tripulante1)
-		game.onTick(1000, "Enemigo se mueve", {=> tripulante1.caminar(tripulante1.moverseRandom())})
-		const tripulante2 = new Tripulante(position = game.at(0, 10))
-		game.addVisual(tripulante2)
-		nave.agregarEnemigo(tripulante2)
-		game.onTick(1000, "Enemigo se mueve", {=> tripulante2.caminar(tripulante2.moverseRandom())})
-		const tripulante3 = new Tripulante(position = game.at(10, 0))
-		game.addVisual(tripulante3)
-		nave.agregarEnemigo(tripulante3)
-		game.onTick(1000, "Enemigo se mueve", {=> tripulante3.caminar(tripulante3.moverseRandom())})
+		generadorTripulantes.nuevoTripulante(3)
 		
-		// config.musica()					
+		config.musica()					
 		config.configurarColisiones()
 		config.tiempoDeJuego(60)		
 	}
@@ -125,3 +114,26 @@ object config {
 
 }
 
+object tripulantesFactory {
+   
+   method spawnearTripulante() {
+   		return new Tripulante(position = randomizer.emptyPosition())
+   }
+  
+}
+   
+ object generadorTripulantes{ 
+	
+	const tripulantesGenerados = []
+ 	
+	method nuevoTripulante(maximo) {
+		maximo.times{ i =>
+				const nuevoTripulante = tripulantesFactory.spawnearTripulante()
+				game.addVisual(nuevoTripulante)
+				tripulantesGenerados.add(nuevoTripulante)
+				nave.agregarEnemigo(nuevoTripulante)
+				game.onTick(1000, "Enemigo se mueve", {=> nuevoTripulante.caminar(nuevoTripulante.moverseRandom())})
+		}
+		
+	}	
+}
