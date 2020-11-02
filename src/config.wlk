@@ -24,7 +24,7 @@ object nivel1 {
 		game.onTick(1000, "Enemigo se mueve", {=> tripulante3.caminar(tripulante3.moverseRandom())})
 			// config.musica()					
 		config.configurarColisiones()
-		config.tiempoDeJuego(60)
+		config.tiempoDeJuego(60)		
 	}
 
 }
@@ -46,8 +46,8 @@ object config {
 		keyboard.right().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().right(1))})
 		keyboard.up().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().up(1))})
 		keyboard.down().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().down(1))})
-		keyboard.a().onPressDo({ player.atacar(player.tripulanteColosionado())})
-		keyboard.s().onPressDo({ player.sabotear()})
+		keyboard.a().onPressDo({player.saboteaOAsesina()})
+
 	}
 
 	method configurarColisiones() {

@@ -165,5 +165,13 @@ object player {
 		return self.position().left(1)
 	}
 
+	method saboteaOAsesina(){
+		if (self.hayMisionCerca()){
+			self.sabotear()
+		} else {
+			self.atacar(self.tripulanteColosionado())
+		}
+	}
+
 }
 
