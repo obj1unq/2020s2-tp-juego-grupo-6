@@ -9,8 +9,12 @@ import escotilla.*
 
 object nivel1 {
 	
-		method dibujarPared(posicionInicial, direccionX, direccionY, cantidadAMover) {
-	cantidadAMover.times({indice => game.addVisualIn(new Pared(),game.at(posicionInicial.x() + direccionX*indice, posicionInicial.y() + direccionY*indice))})  
+	method dibujarPared(posicionInicial, direccionX, direccionY, cantidadAMover) {
+		cantidadAMover.times({indice => game.addVisualIn(new Pared(),game.at(posicionInicial.x() + direccionX*indice, posicionInicial.y() + direccionY*indice))})  
+	}  
+	
+	method dibujarParedInvisible(posicionInicial, direccionX, direccionY, cantidadAMover) {
+		cantidadAMover.times({indice => game.addVisualIn(new ParedInvisible(),game.at(posicionInicial.x() + direccionX*indice, posicionInicial.y() + direccionY*indice))})  
 	}  
 
 	method iniciar() {
@@ -41,6 +45,13 @@ object nivel1 {
 		self.dibujarPared(game.at(9,1), 0, 1, 1)
 		self.dibujarPared(game.at(9,3), 0, 1, 5)
 		
+		//Paredes invisibles (pared en la imagen del fondo del nivel)
+		
+		self.dibujarParedInvisible(game.at(0,11),1,0,11)
+		self.dibujarParedInvisible(game.at(0,11),0,0,1)
+	
+	
+		
 		game.addVisualIn(new Escotilla(), game.at(3,5))
 		
 		
@@ -56,7 +67,8 @@ object nivel1 {
 		game.addVisual(tripulante3)
 		nave.agregarEnemigo(tripulante3)
 		game.onTick(1000, "Enemigo se mueve", {=> tripulante3.caminar(tripulante3.moverseRandom())})
-			// config.musica()					
+		
+		// config.musica()					
 		config.configurarColisiones()
 		config.tiempoDeJuego(60)		
 	}
