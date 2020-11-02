@@ -8,7 +8,7 @@ pasar de nivel cuando matas y saboteas todo
 
 *GAME
 Cambio de perspectiva
-Paredes
+Paredes ya puestas segun el fondo del mapa y codigo principal que teniamos(igualmente estan los dos codigos para ver cual terminamos eligiendo)
 
 crear mas NIVELES aumentando los numeros de enemigos, tareas de sabotaje -> mas dificultad
 
@@ -26,13 +26,9 @@ la imagen tiene que quedar atras del jugador y enemigo
 reducir el tiempo de juego si esta arreglada -> podes perder si se agota todo el tiempo
 
 Escotillas para moverse dentro del juego (teletransportarse)
+(falta hacer que el enemigo(Tripulante) se meta a la escotilla para ir al siguiente mapa)
 
-Objetivos que hacen distintas cosas pero todas se sabotean con la misma tecla (polimorfismo)
+  
  
- *NIVEL
- 
- Implementar el generador de paredes para que el archivo config no sea un choclo
- agregar escotilla para teletransportarse en el mapa
-	
 
 
