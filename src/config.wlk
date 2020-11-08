@@ -6,8 +6,10 @@ import enemigos.*
 import nave.*
 import escotilla.*
 import randomizer.*
+import vida.*
 
 object nivel1 {
+	
 	
 	method dibujarPared(posicionInicial, direccionX, direccionY, cantidadAMover) {
 		cantidadAMover.times({indice => game.addVisualIn(new Pared(),game.at(posicionInicial.x() + direccionX*indice, posicionInicial.y() + direccionY*indice))})  
@@ -18,12 +20,10 @@ object nivel1 {
 	}  
 
 	method iniciar() {
+		game.boardGround("fondonivel1.jpg")
+		
 		config.configurarTeclas()
-		
-		//ernesto
-		//config.agregarParedes()
-		
-		
+
 		//DIBUJAR PAREDES
 		self.dibujarPared(game.at(0,5), 0, 1, 1)
 		self.dibujarPared(game.at(1,2), 0, 1, 1)	
@@ -71,15 +71,6 @@ object nivel1 {
 }
 
 object config {
-//ernesto
-   // const property posiciones = [
-     // [1, 0], [1, 2], [1, 6], [1, 8], [2, 0], [2, 2], [2, 6], [2, 8], [2, 9], [2, 10], [3, 0],
-     //[3, 2], [3, 6], [4, 0], [4, 2], [4, 6], [4, 8], [4, 9], [4, 10], [5, 0], [5, 2], [5, 6],
-     //[5, 8], [6, 0], [6, 2], [6, 3], [6, 4], [6, 6], [6, 8], [6, 9], [6, 10], [6, 11], [7, 0],
-     // [7, 4], [7, 6], [8, 0], [8, 1], [8, 3], [8, 4], [8, 5], [8, 6], [8, 6], [8, 7], [8, 8],
-     //  [8, 9], [9, 6], [10, 4], [10, 6], [11, 6]
-    //]
-
 	var property tiempoDeJuego = 1000
 	
 	//TECLAS
@@ -110,15 +101,6 @@ object config {
 	method agregarTiempoDeJuego(tiempo) {
 		tiempoDeJuego += tiempo
 	}
-	
-//ernesto
-	//method agregarParedes() {
-		//posiciones.forEach {
-			//posicion =>
-				//const ubicacion = new Position(x=posicion.get(0), y=posicion.get(1))
-				//game.addVisualIn(new Pared(), ubicacion)
-		//}
-	//}
 
 }
 
@@ -152,15 +134,32 @@ object nivel2{
 	
 	method iniciar() {
 		game.clear()
-		//cambiar el fondo a otro nivel
+		game.boardGround("fondonivel2.jpg") //no esta cambiando la foto cuando pasas de nivel arreglar eso
 		config.configurarTeclas()
+		//Barra de Vida
+		game.addVisual(barraVida)
+		//Player
 		game.addVisual(player)
 		config.configurarColisiones()
 		generadorTripulantes.nuevoTripulante(5)					
 		config.configurarColisiones()
 		config.tiempoDeJuego(60)
 	}
+}
+
+object nivel3{
 	
-	
-	
+	method iniciar() {
+		game.clear()
+		game.boardGround("fondonivel1.jpg")
+		config.configurarTeclas()
+		//Barra de Vida
+		game.addVisual(barraVida)
+		//Player
+		game.addVisual(player)
+		config.configurarColisiones()
+		generadorTripulantes.nuevoTripulante(10)					
+		config.configurarColisiones()
+		config.tiempoDeJuego(60)
+	}	
 }

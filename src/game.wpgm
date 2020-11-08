@@ -20,9 +20,6 @@ program UNQgame {
 	game.height(12)
 	game.width(12)
 	
-	//Fondo
-	game.boardGround("fondonivel1.jpg")
-	
 	//Niveles
 	nivel1.iniciar()
 	

@@ -1,19 +1,7 @@
 *PLAYER
-Disparo (lejos del enemigo)
-Acuchillar (cerca del enemigo)
 Implementar se puede animar y cambiar la imagen cuando camina [2]
 
-
-Cuando colisionamos con el enemigo para matarlo este nos saca vida,
-esto no seria ideal ya que en un momento si matas a 10 enemigos perdes toda la vida
-
-una opcion q se me ocurre es que una de las misiones nos sume vida cuando la saboteamos
-
-o sacarle el metodo para que el enemigo no te reste vida 
-y que las misiones por cada frame te saquen vida por no estar saboteadas
-
 *CONFIG
-
 
 *GAME
 

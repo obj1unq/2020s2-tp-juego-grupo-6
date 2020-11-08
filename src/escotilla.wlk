@@ -12,6 +12,8 @@ class Escotilla {
 	method serSaboteada() {
 		if (nave.sinTripulantes() && nave.sinSabotajes() && nave.nivelActual() == 1 ){
 			nivel2.iniciar()
+		}else if (nave.sinTripulantes() && nave.sinSabotajes() && nave.nivelActual() == 2 ){
+			nivel3.iniciar()
 		}else{
 			self.error("No cumplis los requisitos para pasar de Nivel")
 		}
