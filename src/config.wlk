@@ -104,6 +104,7 @@ object config {
 	method agregarTiempoDeJuego(tiempo) {
 		tiempoDeJuego += tiempo
 	}
+	
 //ernesto
 	//method agregarParedes() {
 		//posiciones.forEach {

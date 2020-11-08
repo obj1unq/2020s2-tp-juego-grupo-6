@@ -1,5 +1,7 @@
 import config.*
 import nave.*
+import wollok.game.*
+import player.*
 
 class Mision {
 
@@ -7,8 +9,7 @@ class Mision {
 
 	method teDejaPasar() = true
 
-	method teEncontro(player) {
-	}
+	method teEncontro(player) {}
 	
 	override method initialize() {
 		nave.agregarSabojate(self)
@@ -22,17 +23,18 @@ object passwordCode inherits Mision {
 	var property fueSaboteada = false
 
 
-	//	method sabotear(jugador){
-	// deja de restar tiempo
-	//		jugador.sabotaje()
-	//	}
-	
 	override method serSaboteada() {
 		image = "passwordRedCode.png"
-		config.agregarTiempoDeJuego(30)
+		game.removeTickEvent("efectoNoSabotaje")
 		fueSaboteada = true
 		nave.sabotajesRestantes().remove(self)
 	}
+	
+	override method initialize(){
+		super() 
+		game.onTick(5000, "efectoNoSabotaje",{ player.esAtacado(10) })
+	}
+	
 
 }
 

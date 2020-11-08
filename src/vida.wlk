@@ -8,4 +8,6 @@ object barraVida {
 	
 	method teEncontro(player) {}
 	
+	method teDejaPasar() {return true}
+	
 }
