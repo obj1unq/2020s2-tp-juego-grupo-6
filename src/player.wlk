@@ -47,18 +47,23 @@ object player {
 	}
 
 	method atacar(tripulante) {
+		
 		tripulante.esAsesinado()
 		nave.enemigosRestantes().remove(tripulante)
 	}
 
+
 	method tripulanteColosionado() {
-		const tripulantes = game.colliders(self)
+		const tripulantes = nave.enemigosRestantes().filter({tripulante => self.esVecino(tripulante,self.position())})
 		if (tripulantes.isEmpty()) {
 			self.error("No hay un tripulante")
 		}
 		return tripulantes.head()
 	}
-
+	method esVecino(tripulante, posicion) {
+		return tripulante.position().distance(posicion) < 2
+	}
+	
 	method perder() {
 		if (self.vida() == 0) game.say(self, "Derrota")
 		self.finalizarJuego()
