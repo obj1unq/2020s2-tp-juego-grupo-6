@@ -4,7 +4,8 @@ import wollok.game.*
 import player.*
 
 class Mision {
-
+	var property fueSaboteada = false
+	
 	method serSaboteada()
 
 	method teDejaPasar() = true
@@ -20,8 +21,8 @@ class Mision {
 object passwordCode inherits Mision {
 
 	var property image = "passwordCodeDefault.png"
-	var property fueSaboteada = false
-
+	
+	var property position = game.at(11, 11)
 
 	override method serSaboteada() {
 		image = "passwordRedCode.png"
@@ -34,14 +35,13 @@ object passwordCode inherits Mision {
 		super() 
 		game.onTick(5000, "efectoNoSabotaje",{ player.esAtacado(10) })
 	}
-	
 
 }
 
 object cableado inherits Mision {
-
-	var property fueSaboteada = false
 	var property image = "cablesDefault.png"
+	
+	var property position = game.at(1, 11)
 
 	override method serSaboteada() {
 		image = "cablesSaboteados.png"
@@ -50,7 +50,26 @@ object cableado inherits Mision {
 		nave.sabotajesRestantes().remove(self)
 	}
 	
+}
+	
+object medBay inherits Mision {
+	
+	var property image = "MedBay.png"
+	
+	var property position = game.at(0, 8)
+	
+	
+	override method serSaboteada() {
+		if ( not self.fueSaboteada() ){
+			player.vida(100)
+			fueSaboteada = true
+		}
+	}
+	
+	override method initialize(){}
+	
+}
 	
 
-}
+
 

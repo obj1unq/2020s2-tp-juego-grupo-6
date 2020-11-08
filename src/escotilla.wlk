@@ -1,5 +1,6 @@
 import nave.*
 import config.*
+import player.*
 
 class Escotilla {
 	method image()= "escotilla.png"
@@ -8,11 +9,14 @@ class Escotilla {
 	
 	method teDejaPasar() {return true}
 	
-	method esAsesinado() {
-		if (nave.sinTripulantes() && nave.sinSabotajes()){
+	method serSaboteada() {
+		if (nave.sinTripulantes() && nave.sinSabotajes() && nave.nivelActual() == 1 ){
 			nivel2.iniciar()
+		}else{
+			self.error("No cumplis los requisitos para pasar de Nivel")
 		}
 	
 	}
 	
 }
+

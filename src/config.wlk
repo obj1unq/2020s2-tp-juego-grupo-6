@@ -19,9 +19,12 @@ object nivel1 {
 
 	method iniciar() {
 		config.configurarTeclas()
+		
 		//ernesto
 		//config.agregarParedes()
 		
+		
+		//DIBUJAR PAREDES
 		self.dibujarPared(game.at(0,5), 0, 1, 1)
 		self.dibujarPared(game.at(1,2), 0, 1, 1)	
 		self.dibujarPared(game.at(1,4), 0, 1, 2)
@@ -50,9 +53,12 @@ object nivel1 {
 		self.dibujarParedInvisible(game.at(0,11),1,0,11)
 		self.dibujarParedInvisible(game.at(0,11),0,0,1)
 	
-	
-		
+		//Misiones
+		game.addVisual(passwordCode)
+		game.addVisual(cableado)
 		game.addVisualIn(new Escotilla(), game.at(3,5))
+		
+		game.addVisual(medBay)
 		
 		
 		generadorTripulantes.nuevoTripulante(3)

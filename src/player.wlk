@@ -47,11 +47,9 @@ object player {
 	}
 
 	method atacar(tripulante) {
-		
 		tripulante.esAsesinado()
 		nave.enemigosRestantes().remove(tripulante)
 	}
-
 
 	method tripulanteColosionado() {
 		const tripulantes = nave.enemigosRestantes().filter({tripulante => self.esVecino(tripulante,self.position())})
@@ -60,6 +58,7 @@ object player {
 		}
 		return tripulantes.head()
 	}
+	
 	method esVecino(tripulante, posicion) {
 		return tripulante.position().distance(posicion) < 2
 	}
@@ -88,7 +87,7 @@ object player {
 	method teDejaPasar() {
 		return true
 	}
-
+	
 	method sabotear() {
 		if (self.hayMisionCerca()) {
 			self.getMisionCerca().serSaboteada()
@@ -98,7 +97,15 @@ object player {
 	}
 
 	method hayMisionCerca() {
-		return self.existeMisionArriba() or self.existeMisionAbajo() or self.existeMisionDerecha() or self.existeMisionIzquierda()
+		return self.existeMisionArriba() 
+				or self.existeMisionAbajo() 
+				or self.existeMisionDerecha() 
+				or self.existeMisionIzquierda()
+				or self.existeUnaMision()
+	}
+	
+	method estoySobreUnaMision() {
+		return game.uniqueCollider(self)
 	}
 
 	method getMisionCerca() {
@@ -108,9 +115,31 @@ object player {
 			return self.getMisionAbajo()
 		} else if (self.existeMisionDerecha()) {
 			return self.getMisionDerecha()
-		} else {
+		} else if (self.existeMisionIzquierda()){
 			return self.getMisionIzquierda()
+		} else {
+			return self.estoySobreUnaMision()
 		}
+	}
+	
+	method existeUnaMision() {
+		return game.getObjectsIn(self.position()).any(self.dameLaMision())
+	}
+	
+	method existeMisionArriba() {
+		return game.getObjectsIn(self.posicionSuperior()).any(self.dameLaMision())
+	}
+
+	method existeMisionAbajo() {
+		return game.getObjectsIn(self.posicionInferior()).any(self.dameLaMision())
+	}
+
+	method existeMisionDerecha() {
+		return game.getObjectsIn(self.posicionALaDerecha()).any(self.dameLaMision())
+	}
+
+	method existeMisionIzquierda() {
+		return game.getObjectsIn(self.posicionALaIzquierda()).any(self.dameLaMision())
 	}
 
 	method getMisionArriba() {
@@ -129,24 +158,14 @@ object player {
 		return game.getObjectsIn(self.posicionALaIzquierda()).find(self.dameLaMision())
 	}
 
-	method existeMisionArriba() {
-		return game.getObjectsIn(self.posicionSuperior()).any(self.dameLaMision())
-	}
-
-	method existeMisionAbajo() {
-		return game.getObjectsIn(self.posicionInferior()).any(self.dameLaMision())
-	}
-
-	method existeMisionDerecha() {
-		return game.getObjectsIn(self.posicionALaDerecha()).any(self.dameLaMision())
-	}
-
-	method existeMisionIzquierda() {
-		return game.getObjectsIn(self.posicionALaIzquierda()).any(self.dameLaMision())
-	}
+	
 
 	method dameLaMision() {
-		return ({ i => i.image() == "passwordCodeDefault.png" or i.image() == "cablesDefault.png" or i.image() == "escotilla.png"})
+		return { i => i.image() == "passwordCodeDefault.png" 
+					or i.image() == "cablesDefault.png" 
+					or i.image() == "escotilla.png"
+					or i.image() == "MedBay.png"
+				}
 	}
 
 	method posicionSuperior() {
@@ -172,6 +191,7 @@ object player {
 			self.atacar(self.tripulanteColosionado())
 		}
 	}
+	
 
 }
 
