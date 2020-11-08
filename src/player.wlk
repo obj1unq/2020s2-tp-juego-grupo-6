@@ -37,7 +37,8 @@ object player {
 	}
 
 	method esAtacado(danio) {
-		vida -= 10	
+		vida -= 10
+		vida = vida.max(0)
 		if (vida == 0) {
 			// implementar dejar de moverse con las teclas si muere (quedarse quieto en el lugar)
 			self.image("dead.png")

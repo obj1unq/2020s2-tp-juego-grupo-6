@@ -4,14 +4,20 @@ import config.*
 import enemigos.*
 import misiones.*
 import nave.*
+import vida.*
 
 program UNQgame {
 	game.title("AmUNQ Us")
 	
 	//VISUALES
+	//Barra de Vida
+	game.addVisual(barraVida)
+	//Player
 	game.addVisual(player)
+	//Misiones
 	game.addVisualIn(passwordCode, game.at(11, 11))
 	game.addVisualIn(cableado, game.at(1, 11))
+	
 	
 	
 	//CONFIGURACIONES
