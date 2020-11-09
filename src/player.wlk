@@ -52,27 +52,25 @@ object player {
 	}
 
 	method tripulanteColosionado() {
-		const tripulantes = nave.enemigosRestantes().filter({tripulante => self.esVecino(tripulante,self.position())})
+		const tripulantes = nave.enemigosRestantes().filter({ tripulante => self.esVecino(tripulante, self.position()) })
 		if (tripulantes.isEmpty()) {
 			self.error("No hay un tripulante")
 		}
 		return tripulantes.head()
 	}
-	
+
 	method esVecino(tripulante, posicion) {
 		return tripulante.position().distance(posicion) < 2
 	}
-	
+
 	method perder() {
 		if (self.vida() == 0) game.say(self, "Derrota")
 		self.finalizarJuego()
 	}
 
 	method ganar() {
-		if (nave.sinTripulantes() && nave.sinSabotajes() && nave.esElUltimoNivel()){
 		game.say(self, "Victoria")
 		self.finalizarJuego()
-		}
 	}
 
 	method finalizarJuego() {
@@ -87,7 +85,7 @@ object player {
 	method teDejaPasar() {
 		return true
 	}
-	
+
 	method sabotear() {
 		if (self.hayMisionCerca()) {
 			self.getMisionCerca().serSaboteada()
@@ -97,13 +95,9 @@ object player {
 	}
 
 	method hayMisionCerca() {
-		return self.existeMisionArriba() 
-				or self.existeMisionAbajo() 
-				or self.existeMisionDerecha() 
-				or self.existeMisionIzquierda()
-				or self.existeUnaMision()
+		return self.existeMisionArriba() or self.existeMisionAbajo() or self.existeMisionDerecha() or self.existeMisionIzquierda() or self.existeUnaMision()
 	}
-	
+
 	method estoySobreUnaMision() {
 		return game.uniqueCollider(self)
 	}
@@ -115,17 +109,17 @@ object player {
 			return self.getMisionAbajo()
 		} else if (self.existeMisionDerecha()) {
 			return self.getMisionDerecha()
-		} else if (self.existeMisionIzquierda()){
+		} else if (self.existeMisionIzquierda()) {
 			return self.getMisionIzquierda()
 		} else {
 			return self.estoySobreUnaMision()
 		}
 	}
-	
+
 	method existeUnaMision() {
 		return game.getObjectsIn(self.position()).any(self.dameLaMision())
 	}
-	
+
 	method existeMisionArriba() {
 		return game.getObjectsIn(self.posicionSuperior()).any(self.dameLaMision())
 	}
@@ -158,14 +152,8 @@ object player {
 		return game.getObjectsIn(self.posicionALaIzquierda()).find(self.dameLaMision())
 	}
 
-	
-
 	method dameLaMision() {
-		return { i => i.image() == "passwordCodeDefault.png" 
-					or i.image() == "cablesDefault.png" 
-					or i.image() == "escotilla.png"
-					or i.image() == "MedBay.png"
-				}
+		return { i => i.image() == "passwordCodeDefault.png" or i.image() == "cablesDefault.png" or i.image() == "escotilla.png" or i.image() == "MedBay.png" }
 	}
 
 	method posicionSuperior() {
@@ -184,14 +172,13 @@ object player {
 		return self.position().left(1)
 	}
 
-	method saboteaOAsesina(){
-		if (self.hayMisionCerca()){
+	method saboteaOAsesina() {
+		if (self.hayMisionCerca()) {
 			self.sabotear()
 		} else {
 			self.atacar(self.tripulanteColosionado())
 		}
 	}
-	
 
 }
 

@@ -10,4 +10,5 @@ object nave {
 	
 	//mas adelante cambiar el numero de ultimo nivel
 	method esElUltimoNivel(){return nivelActual == 3}
+	method pasarDeNivel() {nivelActual ++}
 }

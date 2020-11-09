@@ -12,13 +12,15 @@ class Mision {
 
 	method teEncontro(player) {}
 	
-	override method initialize() {
+    override method initialize() {
 		nave.agregarSabojate(self)
 	}
+	
+	method reiniciar() {if (self.fueSaboteada()) fueSaboteada = false}
 
 }
 
-object passwordCode inherits Mision {
+class PasswordCode inherits Mision {
 
 	var property image = "passwordCodeDefault.png"
 	
@@ -31,6 +33,13 @@ object passwordCode inherits Mision {
 		nave.sabotajesRestantes().remove(self)
 	}
 	
+	override method reiniciar() {
+		super()
+		image = "passwordCodeDefault.png"
+		
+        
+	}
+	
 	override method initialize(){
 		super() 
 		game.onTick(5000, "efectoNoSabotaje",{ player.esAtacado(10) })
@@ -38,7 +47,7 @@ object passwordCode inherits Mision {
 
 }
 
-object cableado inherits Mision {
+class Cableado inherits Mision {
 	var property image = "cablesDefault.png"
 	
 	var property position = game.at(1, 11)
@@ -48,6 +57,12 @@ object cableado inherits Mision {
 		config.agregarTiempoDeJuego(20)
 		fueSaboteada = true
 		nave.sabotajesRestantes().remove(self)
+	}
+	
+	override method reiniciar() {
+		super()
+		image = "cablesDefault.png"
+		
 	}
 	
 }
@@ -64,12 +79,21 @@ object medBay inherits Mision {
 			player.vida(100)
 			fueSaboteada = true
 		}
+		else {self.error("Ya fue utilizada")}
 	}
 	
 	override method initialize(){}
 	
 }
+
+object reiniciarSabotajes {
 	
+	method ejecutar() {
+		medBay.reiniciar()
+		
+		
+	}
+}	
 
 
 

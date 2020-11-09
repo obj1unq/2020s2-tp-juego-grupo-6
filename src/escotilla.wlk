@@ -14,6 +14,8 @@ class Escotilla {
 			nivel2.iniciar()
 		}else if (nave.sinTripulantes() && nave.sinSabotajes() && nave.nivelActual() == 2 ){
 			nivel3.iniciar()
+		}else if (nave.sinTripulantes() && nave.sinSabotajes() && nave.esElUltimoNivel() ){
+			player.ganar()			
 		}else{
 			self.error("No cumplis los requisitos para pasar de Nivel")
 		}
