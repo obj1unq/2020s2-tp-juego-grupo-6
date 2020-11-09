@@ -10,18 +10,13 @@ import vida.*
 program UNQgame {
 	game.title("AmUNQ Us")
 	
-	//VISUALES
-	//Player
-	
-	
 	//CONFIGURACIONES
 	game.height(12)
 	game.width(12)
 	
 	//Niveles
 	nivel1.iniciar()
-	
-	
+		
 	//DEBUG
 	game.showAttributes(player)
 	

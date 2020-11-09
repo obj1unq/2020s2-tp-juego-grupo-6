@@ -4,26 +4,25 @@ import wollok.game.*
 import player.*
 
 class Mision {
+
 	var property fueSaboteada = false
-	
+
 	method serSaboteada()
 
 	method teDejaPasar() = true
 
-	method teEncontro(player) {}
-	
-    override method initialize() {
+	method teEncontro(player) {
+	}
+
+	override method initialize() {
 		nave.agregarSabojate(self)
 	}
-	
-	method reiniciar() {if (self.fueSaboteada()) fueSaboteada = false}
 
 }
 
 class PasswordCode inherits Mision {
 
 	var property image = "passwordCodeDefault.png"
-	
 	var property position = game.at(11, 11)
 
 	override method serSaboteada() {
@@ -32,24 +31,17 @@ class PasswordCode inherits Mision {
 		fueSaboteada = true
 		nave.sabotajesRestantes().remove(self)
 	}
-	
-	override method reiniciar() {
+
+	override method initialize() {
 		super()
-		image = "passwordCodeDefault.png"
-		
-        
-	}
-	
-	override method initialize(){
-		super() 
-		game.onTick(5000, "efectoNoSabotaje",{ player.esAtacado(10) })
+		game.onTick(5000, "efectoNoSabotaje", { player.esAtacado(10)})
 	}
 
 }
 
-class Cableado inherits Mision {
+class Cableado inherits Mision { //Revisar, no es tomado en cuenta para pasar de nivel
+
 	var property image = "cablesDefault.png"
-	
 	var property position = game.at(1, 11)
 
 	override method serSaboteada() {
@@ -58,42 +50,22 @@ class Cableado inherits Mision {
 		fueSaboteada = true
 		nave.sabotajesRestantes().remove(self)
 	}
-	
-	override method reiniciar() {
-		super()
-		image = "cablesDefault.png"
-		
-	}
-	
+
 }
-	
-object medBay inherits Mision {
-	
+
+class MedBay inherits Mision {
+
 	var property image = "MedBay.png"
-	
 	var property position = game.at(0, 8)
-	
-	
+
 	override method serSaboteada() {
-		if ( not self.fueSaboteada() ){
+		if (not self.fueSaboteada()) {
 			player.vida(100)
 			fueSaboteada = true
+		} else {
+			self.error("Ya fue utilizada")
 		}
-		else {self.error("Ya fue utilizada")}
 	}
-	
-	override method initialize(){}
-	
+
 }
-
-object reiniciarSabotajes {
-	
-	method ejecutar() {
-		medBay.reiniciar()
-		
-		
-	}
-}	
-
-
 
