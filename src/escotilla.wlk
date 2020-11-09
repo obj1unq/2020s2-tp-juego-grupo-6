@@ -10,6 +10,10 @@ class Escotilla {
 	
 	method teDejaPasar() {return true}
 	
+	
+	//validar tripulantes y  sabotajes 
+	
+	
 	method serSaboteada() {
 		if (nave.sinTripulantes() && nave.sinSabotajes() && nave.nivelActual() == 1 ){
 			nivel2.iniciar()
