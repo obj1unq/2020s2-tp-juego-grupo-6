@@ -11,10 +11,8 @@ program UNQgame {
 	game.title("AmUNQ Us")
 	
 	//VISUALES
-	//Barra de Vida
-	game.addVisual(barraVida)
 	//Player
-	game.addVisual(player)
+	
 	
 	//CONFIGURACIONES
 	game.height(12)
