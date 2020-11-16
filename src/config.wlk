@@ -151,7 +151,7 @@ object config {
 		keyboard.right().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().right(1))})
 		keyboard.up().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().up(1))})
 		keyboard.down().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().down(1))})
-		keyboard.a().onPressDo({ player.saboteaOAsesina()}) // o cura
+		keyboard.a().onPressDo({ player.accion()}) // accion para sabotear o matar
 	}
 
 	method configurarColisiones() {

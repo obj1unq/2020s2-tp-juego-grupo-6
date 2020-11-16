@@ -30,7 +30,7 @@ class PasswordCode inherits Mision {
 
 	override method initialize() {
 		super()
-		game.onTick(5000, "efectoNoSabotaje", { player.esAtacado(10)})
+		game.onTick(5000, "efectoNoSabotaje", { player.esAtacado()})
 	}
 
 }

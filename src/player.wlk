@@ -36,7 +36,7 @@ object player inherits Personajes{
 
 
 
-	method esAtacado(danio) {
+	override method esAtacado() {
 		vida -= 10
 		vida = vida.max(0)
 		if (vida == 0) {
@@ -75,6 +75,14 @@ object player inherits Personajes{
 
 	method finalizarJuego() {
 		game.schedule(3000, { game.stop()})
+	}
+	
+	method accion() {
+		if (self.hayMisionCerca()) {
+			self.sabotear()
+		} else {
+			self.atacar(self.tripulanteColosionado())
+		}
 	}
 
 	method sabotear() {
@@ -163,13 +171,6 @@ object player inherits Personajes{
 		return self.position().left(1)
 	}
 
-	method saboteaOAsesina() {
-		if (self.hayMisionCerca()) {
-			self.sabotear()
-		} else {
-			self.atacar(self.tripulanteColosionado())
-		}
-	}
 
 }
 

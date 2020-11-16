@@ -25,10 +25,10 @@ class Tripulante inherits Personajes{
 
 	override method atacar(player) {
 		// averiguar si se puede poner una animacion
-		player.esAtacado(10)
+		player.esAtacado()
 	}
 
-	method esAsesinado() {
+	override method esAtacado() {
 		self.colorMuerto()
 		vida = 0
 	}
