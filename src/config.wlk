@@ -22,7 +22,6 @@ class Nivel {
 		game.addVisual(player)
 		config.configurarTeclas()
 		game.addVisual(barraVida)
-		config.musica()
 		config.configurarColisiones()
 		config.tiempoDeJuego(60)
 		game.addVisual(new PasswordCode())
@@ -37,8 +36,10 @@ object nivel1 inherits Nivel {
 
 	override method iniciar() {
 		super()
+		config.musica()
 		game.boardGround("fondonivel1.jpg")
-			// DIBUJAR PAREDES
+		
+		// DIBUJAR PAREDES
 		self.dibujarPared(game.at(0, 5), 0, 1, 1)
 		self.dibujarPared(game.at(1, 2), 0, 1, 1)
 		self.dibujarPared(game.at(1, 4), 0, 1, 2)
@@ -61,10 +62,12 @@ object nivel1 inherits Nivel {
 		self.dibujarPared(game.at(8, 3), 0, 1, 1)
 		self.dibujarPared(game.at(9, 1), 0, 1, 1)
 		self.dibujarPared(game.at(9, 3), 0, 1, 5)
-			// Paredes invisibles (pared en la imagen del fondo del nivel)
+		
+		// Paredes invisibles (pared en la imagen del fondo del nivel)
 		self.dibujarParedInvisible(game.at(0, 11), 1, 0, 11)
 		self.dibujarParedInvisible(game.at(0, 11), 0, 0, 1)
-			// Misiones
+		
+		// Misiones
 		generadorTripulantes.nuevoTripulante(3)
 	}
 

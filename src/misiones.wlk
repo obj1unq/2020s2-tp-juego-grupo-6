@@ -11,13 +11,9 @@ class Mision {
 
 	method teDejaPasar() = true
 
-	method teEncontro(player) {
-	}
+	method teEncontro(player) {}
 
-	override method initialize() {
-		nave.agregarSabojate(self)
-	}
-
+	override method initialize() {nave.agregarSabojate(self)}
 }
 
 class PasswordCode inherits Mision {
@@ -50,6 +46,9 @@ class Cableado inherits Mision { //Revisar, no es tomado en cuenta para pasar de
 		fueSaboteada = true
 		nave.sabotajesRestantes().remove(self)
 	}
+	
+	override method initialize() {
+		super()}
 
 }
 

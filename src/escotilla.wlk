@@ -5,16 +5,18 @@ import player.*
 
 class Escotilla {
 
-	method image() = "escotilla.png"
 
-	method teEncontro(jugador) {
-		return self.teDejaPasar()
-	}
 
-	method teDejaPasar() {
-		return true
-	}
-
+	method image()= "escotilla.png"
+	
+	method teEncontro(jugador) {return self.teDejaPasar()}
+	
+	method teDejaPasar() {return true}
+	
+	
+	//validar tripulantes y  sabotajes 
+	
+	
 	method serSaboteada() {
 		if (nave.sinTripulantes() && nave.sinSabotajes() && nave.nivelActual() == 1) {
 			nivel2.iniciar()
