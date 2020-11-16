@@ -47,7 +47,7 @@ object player inherits Personajes{
 	}
 
 	override method atacar(tripulante) {
-		tripulante.esAsesinado()
+		tripulante.esAtacado()
 		nave.enemigosRestantes().remove(tripulante)
 	}
 
