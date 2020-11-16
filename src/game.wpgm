@@ -6,20 +6,15 @@ import misiones.*
 import nave.*
 import vida.*
 
-
 program UNQgame {
 	game.title("AmUNQ Us")
-	
-	//CONFIGURACIONES
+		// CONFIGURACIONES
 	game.height(12)
 	game.width(12)
-	
-	//Niveles
+		// Niveles
 	nivel1.iniciar()
-		
-	//DEBUG
+		// DEBUG
 	game.showAttributes(player)
-	
-	//START
+		// START
 	game.start()
 }

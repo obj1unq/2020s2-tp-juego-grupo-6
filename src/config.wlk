@@ -29,7 +29,6 @@ class Nivel {
 		game.addVisual(new Cableado())
 		game.addVisualIn(new Escotilla(), game.at(3, 5))
 		game.addVisual(new MedBay())
-		
 	}
 
 }
@@ -71,7 +70,7 @@ object nivel1 inherits Nivel {
 
 }
 
-object nivel2 inherits Nivel { 
+object nivel2 inherits Nivel {
 
 	override method iniciar() {
 		game.clear()
@@ -98,7 +97,7 @@ object nivel2 inherits Nivel {
 		self.dibujarPared(game.at(8, 0), 0, 1, 2)
 		self.dibujarPared(game.at(8, 3), 0, 1, 1)
 		self.dibujarPared(game.at(9, 1), 0, 1, 1)
-		self.dibujarPared(game.at(9, 3), 0, 1, 5) //Agregar mas paredes
+		self.dibujarPared(game.at(9, 3), 0, 1, 5) // Agregar mas paredes
 		game.boardGround("fondonivel2.jpg") // no esta cambiando la foto cuando pasas de nivel arreglar eso
 		generadorTripulantes.nuevoTripulante(7)
 	}
@@ -132,8 +131,8 @@ object nivel3 inherits Nivel {
 		self.dibujarPared(game.at(8, 0), 0, 1, 2)
 		self.dibujarPared(game.at(8, 3), 0, 1, 1)
 		self.dibujarPared(game.at(9, 1), 0, 1, 1)
-		self.dibujarPared(game.at(9, 3), 0, 1, 5) //Agregar muchas mas paredes
-		game.boardGround("fondonivel1.jpg") //Cambiar fondo
+		self.dibujarPared(game.at(9, 3), 0, 1, 5) // Agregar muchas mas paredes
+		game.boardGround("fondonivel1.jpg") // Cambiar fondo
 		generadorTripulantes.nuevoTripulante(12)
 	}
 
