@@ -34,9 +34,7 @@ object player inherits Personajes{
 		}
 	}
 
-	method estaDentroDeLaPantalla(nuevaPosicion) {
-		return nuevaPosicion.x().between(0, game.width() - 1) and nuevaPosicion.y().between(0, game.height() - 1)
-	}
+
 
 	method esAtacado(danio) {
 		vida -= 10

@@ -49,9 +49,7 @@ class Tripulante inherits Personajes{
 
 
 	// que caminen por el nivel
-	method estaDentroDeLaPantalla(nuevaPosicion) {
-		return nuevaPosicion.x().between(0, game.width() - 1) and nuevaPosicion.y().between(0, game.height() - 1)
-	}
+
 
 	method caminar(direccion) {
 		if (vida > 0) {
