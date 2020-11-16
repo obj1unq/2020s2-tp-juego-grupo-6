@@ -47,9 +47,6 @@ class Cableado inherits Mision { //Revisar, no es tomado en cuenta para pasar de
 		nave.sabotajesRestantes().remove(self)
 	}
 	
-	override method initialize() {
-		super()}
-
 }
 
 class MedBay inherits Mision {
