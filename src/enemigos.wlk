@@ -1,6 +1,8 @@
 import wollok.game.*
+import personajes.*
 
-class Tripulante {
+
+class Tripulante inherits Personajes{
 
 	var property vida = 100
 	var property image
@@ -21,7 +23,7 @@ class Tripulante {
 		}
 	}
 
-	method atacar(player) {
+	override method atacar(player) {
 		// averiguar si se puede poner una animacion
 		player.esAtacado(10)
 	}
@@ -45,19 +47,9 @@ class Tripulante {
 		}
 	}
 
-	method teDejaPasar() {
-		return true
-	}
 
 	// que caminen por el nivel
-	method estaDentroDeLaPantalla(nuevaPosicion) {
-		return nuevaPosicion.x().between(0, game.width() - 1) and nuevaPosicion.y().between(0, game.height() - 1)
-	}
 
-	method paredColisionada(nuevaPosicion) {
-		const paredes = game.getObjectsIn(nuevaPosicion)
-		return paredes.any({ pared => not pared.teDejaPasar() })
-	}
 
 	method caminar(direccion) {
 		if (vida > 0) {
