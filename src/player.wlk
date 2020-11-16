@@ -3,8 +3,10 @@ import paredes.*
 import enemigos.*
 import misiones.*
 import nave.*
+import personajes.*
 
-object player {
+
+object player inherits Personajes{
 
 	var property vida = 100
 	var property position = game.origin()
@@ -46,7 +48,7 @@ object player {
 		}
 	}
 
-	method atacar(tripulante) {
+	override method atacar(tripulante) {
 		tripulante.esAsesinado()
 		nave.enemigosRestantes().remove(tripulante)
 	}
@@ -75,15 +77,6 @@ object player {
 
 	method finalizarJuego() {
 		game.schedule(3000, { game.stop()})
-	}
-
-	method paredColisionada(nuevaPosicion) {
-		const paredes = game.getObjectsIn(nuevaPosicion)
-		return paredes.any({ pared => not pared.teDejaPasar() })
-	}
-
-	method teDejaPasar() {
-		return true
 	}
 
 	method sabotear() {
