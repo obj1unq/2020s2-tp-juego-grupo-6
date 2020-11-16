@@ -1,7 +1,9 @@
+import config.*
+
 object nave {
 	var property enemigosRestantes = []
 	var property sabotajesRestantes = []
-	var property nivelActual = 1
+	var property nivelActual = null
 	
 	method agregarEnemigo(tripulante) {enemigosRestantes.add(tripulante)}
 	
@@ -12,7 +14,8 @@ object nave {
 	method sinSabotajes() {return sabotajesRestantes.isEmpty()}
 	
 	//mas adelante cambiar el numero de ultimo nivel
-	method esElUltimoNivel(){return nivelActual == 3}
+	method esElUltimoNivel(){return nivelActual == nivel3}
 	
-	method pasarDeNivel() {nivelActual ++}
+	
+	
 }

@@ -19,9 +19,9 @@ class Nivel {
 	}
 
 	method iniciar() {
+		game.clear()
 		config.configurarTeclas()
-		
-		
+		nave.nivelActual(self)
 		game.addVisual(new PasswordCode())
 		game.addVisual(new Cableado())
 		game.addVisualIn(new Escotilla(), game.at(3, 5))
@@ -30,6 +30,13 @@ class Nivel {
 		config.configurarColisiones()
 		game.addVisual(barraVida)
 		config.tiempoDeJuego(60)
+		config.musica()
+	}
+	
+	method siguienteNivel()
+	
+	method pasarDeNivel() {self.siguienteNivel().iniciar()
+		
 	}
 
 }
@@ -38,7 +45,7 @@ object nivel1 inherits Nivel {
 
 	override method iniciar() {
 		super()
-		config.musica()
+		
 		game.boardGround("fondonivel1.jpg")
 		
 		// DIBUJAR PAREDES
@@ -70,14 +77,17 @@ object nivel1 inherits Nivel {
 		// Misiones
 		generadorTripulantes.nuevoTripulante(3)
 	}
+	
+	override method siguienteNivel() {return nivel2}
+	
+	
 
 }
 
 object nivel2 inherits Nivel {
 
 	override method iniciar() {
-		game.clear()
-		nave.pasarDeNivel()
+		
 		super()
 		self.dibujarPared(game.at(0, 5), 0, 1, 1)
 		self.dibujarPared(game.at(1, 2), 0, 1, 1)
@@ -104,14 +114,14 @@ object nivel2 inherits Nivel {
 		game.boardGround("fondonivel2.jpg") // no esta cambiando la foto cuando pasas de nivel arreglar eso
 		generadorTripulantes.nuevoTripulante(7)
 	}
+	
+	override method siguienteNivel() {return nivel3}
 
 }
 
 object nivel3 inherits Nivel {
 
 	override method iniciar() {
-		game.clear()
-		nave.pasarDeNivel()
 		super()
 		self.dibujarPared(game.at(0, 5), 0, 1, 1)
 		self.dibujarPared(game.at(1, 2), 0, 1, 1)
@@ -138,6 +148,8 @@ object nivel3 inherits Nivel {
 		game.boardGround("fondonivel1.jpg") // Cambiar fondo
 		generadorTripulantes.nuevoTripulante(12)
 	}
+	
+	override method siguienteNivel() {}
 
 }
 
