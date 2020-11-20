@@ -4,6 +4,7 @@ import enemigos.*
 import misiones.*
 import nave.*
 import personajes.*
+import direcciones.*
 
 
 object player inherits Personajes{
@@ -11,6 +12,8 @@ object player inherits Personajes{
 	var property vida = 100
 	var property position = game.origin()
 	var property image = "idle.png"
+	const property direcciones = [arriba, abajo, izquierda, derecha]
+	
 
 	// Movimientos
 	method irASiSeMantieneEnLaPantalla(nuevaPosicion) {
@@ -35,7 +38,6 @@ object player inherits Personajes{
 	}
 
 
-
 	override method esAtacado() {
 		vida -= 10
 		vida = vida.max(0)
@@ -48,7 +50,7 @@ object player inherits Personajes{
 
 	override method atacar(tripulante) {
 		tripulante.esAtacado()
-		nave.enemigosRestantes().remove(tripulante)
+		nave.removerTripulante(tripulante)
 	}
 
 	method tripulanteColosionado() {
@@ -82,95 +84,23 @@ object player inherits Personajes{
 			self.sabotear()
 		} else {
 			self.atacar(self.tripulanteColosionado())
-		}
+		} 
 	}
 
 	method sabotear() {
 		if (self.hayMisionCerca()) {
-			self.getMisionCerca().serSaboteada()
+			self.getMisionCercana().serSaboteada()
 		} else {
 			self.error("No hay una mision")
 		}
 	}
-
-	method hayMisionCerca() {
-		return self.existeMisionArriba() or self.existeMisionAbajo() or self.existeMisionDerecha() or self.existeMisionIzquierda() or self.existeUnaMision()
+ 
+	method hayMisionCerca(){
+		return nave.sabotajesRestantes().any({mision=> mision.esMisionCercana()})
 	}
-
-	method estoySobreUnaMision() {
-		return game.uniqueCollider(self)
+	
+	method getMisionCercana(){
+		return nave.sabotajesRestantes().filter({mision=> mision.esMisionCercana()}).anyOne()
 	}
-
-	method getMisionCerca() {
-		if (self.existeMisionArriba()) {
-			return self.getMisionArriba()
-		} else if (self.existeMisionAbajo()) {
-			return self.getMisionAbajo()
-		} else if (self.existeMisionDerecha()) {
-			return self.getMisionDerecha()
-		} else if (self.existeMisionIzquierda()) {
-			return self.getMisionIzquierda()
-		} else {
-			return self.estoySobreUnaMision()
-		}
-	}
-
-	method existeUnaMision() {
-		return game.getObjectsIn(self.position()).any(self.dameLaMision())
-	}
-
-	method existeMisionArriba() {
-		return game.getObjectsIn(self.posicionSuperior()).any(self.dameLaMision())
-	}
-
-	method existeMisionAbajo() {
-		return game.getObjectsIn(self.posicionInferior()).any(self.dameLaMision())
-	}
-
-	method existeMisionDerecha() {
-		return game.getObjectsIn(self.posicionALaDerecha()).any(self.dameLaMision())
-	}
-
-	method existeMisionIzquierda() {
-		return game.getObjectsIn(self.posicionALaIzquierda()).any(self.dameLaMision())
-	}
-
-	method getMisionArriba() {
-		return game.getObjectsIn(self.posicionSuperior()).find(self.dameLaMision())
-	}
-
-	method getMisionAbajo() {
-		return game.getObjectsIn(self.posicionInferior()).find(self.dameLaMision())
-	}
-
-	method getMisionDerecha() {
-		return game.getObjectsIn(self.posicionALaDerecha()).find(self.dameLaMision())
-	}
-
-	method getMisionIzquierda() {
-		return game.getObjectsIn(self.posicionALaIzquierda()).find(self.dameLaMision())
-	}
-
-	method dameLaMision() {
-		return { i => i.image() == "passwordCodeDefault.png" or i.image() == "cablesDefault.png" or i.image() == "escotilla.png" or i.image() == "MedBay.png" }
-	}
-
-	method posicionSuperior() {
-		return self.position().up(1)
-	}
-
-	method posicionInferior() {
-		return self.position().down(1)
-	}
-
-	method posicionALaDerecha() {
-		return self.position().right(1)
-	}
-
-	method posicionALaIzquierda() {
-		return self.position().left(1)
-	}
-
-
+	
 }
-

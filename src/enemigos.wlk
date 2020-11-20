@@ -1,5 +1,6 @@
 import wollok.game.*
 import personajes.*
+import direcciones.*
 
 
 class Tripulante inherits Personajes{
@@ -7,8 +8,8 @@ class Tripulante inherits Personajes{
 	var property vida = 100
 	var property image
 	var property position
-	const property direcciones = [ arriba, abajo, izquierda, derecha ]
-
+	const property direcciones = [arriba, abajo, izquierda, derecha]
+ 
 	method muerto() {
 		return vida == 0
 	}
@@ -61,36 +62,3 @@ class Tripulante inherits Personajes{
 	}
 
 }
-
-object arriba {
-
-	method siguiente(posicion) {
-		return posicion.up(1)
-	}
-
-}
-
-object abajo {
-
-	method siguiente(posicion) {
-		return posicion.down(1)
-	}
-
-}
-
-object izquierda {
-
-	method siguiente(posicion) {
-		return posicion.left(1)
-	}
-
-}
-
-object derecha {
-
-	method siguiente(posicion) {
-		return posicion.right(1)
-	}
-
-}
-

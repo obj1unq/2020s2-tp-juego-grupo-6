@@ -24,7 +24,7 @@ class Nivel {
 		nave.nivelActual(self)
 		game.addVisual(new PasswordCode())
 		game.addVisual(new Cableado())
-		game.addVisualIn(new Escotilla(), game.at(3, 5))
+		game.addVisual(new Escotilla())
 		game.addVisual(new MedBay())
 		game.addVisual(player)
 		config.configurarColisiones()
@@ -36,12 +36,15 @@ class Nivel {
 	method siguienteNivel()
 	
 	method pasarDeNivel() {self.siguienteNivel().iniciar()
-		
 	}
+	
+	//method generarMisiones()
 
 }
 
 object nivel1 inherits Nivel {
+
+	
 
 	override method iniciar() {
 		super()
@@ -76,11 +79,18 @@ object nivel1 inherits Nivel {
 		
 		// Misiones
 		generadorTripulantes.nuevoTripulante(3)
-	}
+		
+		//self.generarMisiones()
+		//}
 	
-	override method siguienteNivel() {return nivel2}
+		override method siguienteNivel() {return nivel2}
 	
-	
+		//override method generarMisiones(){
+			//nave.agregarSabotaje(new Cableado()) 
+		//	nave.agregarSabotaje(new PasswordCode()) 
+			//nave.agregarSabotaje(new MedBay()) 			
+			
+	//	}	
 
 }
 
@@ -116,6 +126,10 @@ object nivel2 inherits Nivel {
 	}
 	
 	override method siguienteNivel() {return nivel3}
+	
+	//override method generarMisiones(){
+		
+	//}
 
 }
 
@@ -150,6 +164,10 @@ object nivel3 inherits Nivel {
 	}
 	
 	override method siguienteNivel() {}
+	
+	//override method generarMisiones(){
+		
+	//}
 
 }
 

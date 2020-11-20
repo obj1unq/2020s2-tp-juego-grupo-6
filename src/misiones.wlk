@@ -7,20 +7,33 @@ class Mision {
 
 	var property fueSaboteada = false
 	var property image
+	
+	method position()
 
 	method serSaboteada() {
 		image = self.imagenSaboteada()
 		fueSaboteada = true
-		nave.sabotajesRestantes().remove(self)
+		nave.removerMision(self)
 	}
 
 	method teDejaPasar() = true
 
-	method teEncontro(player) {}
+	method teEncontro(player){
+	}
 	
 	method imagenSaboteada()
 
-	override method initialize() {nave.agregarSabojate(self)}
+   override method initialize() {nave.agregarSabotaje(self)}
+	
+	method esMisionCercana(){
+		return self.position().distance(player.position()) <= 1 
+	}
+	
+	
+	method esVecino(tripulante, posicion) {
+		return tripulante.position().distance(posicion) < 2
+	}
+	
 }
 
 class PasswordCode inherits Mision {
@@ -38,14 +51,14 @@ class PasswordCode inherits Mision {
 	override method imagenSaboteada() {return "passwordRedCode.png"}
 
 	override method initialize() {
-		super()
-		self.image("passwordCodeDefault.png")
+		super() 
+		self.image("passwordCode.png")
 		game.onTick(5000, "efectoNoSabotaje", { player.esAtacado()})
 	}
 
 }
 
-class Cableado inherits Mision { //Revisar, no es tomado en cuenta para pasar de nivel
+class Cableado inherits Mision {  
 
 	var property position = game.at(1, 11)
 
@@ -57,7 +70,8 @@ class Cableado inherits Mision { //Revisar, no es tomado en cuenta para pasar de
 	
 	override method imagenSaboteada() {return "cablesSaboteados.png"}
 	
-	override method initialize() {super() self.image("cablesDefault.png")}
+	override method initialize() {super() self.image("cablesConectados.png")		
+	}
 }
 
 class MedBay inherits Mision {
@@ -76,6 +90,12 @@ class MedBay inherits Mision {
 	override method imagenSaboteada() {}
 	
 	override method initialize() {super() self.image("MedBay.png")}
+	
+	override method esMisionCercana(){
+		return self.position().distance(player.position()) == 0 
+	}
+	
+	 
 
 }
 

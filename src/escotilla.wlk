@@ -2,22 +2,29 @@ import nave.*
 import wollok.game.*
 import config.*
 import player.*
-
-class Escotilla {
-
+import misiones.*
 
 
-	method image()= "escotilla.png"
+class Escotilla inherits Mision{
+
+ 	var property position = game.at(3, 5)
 	
-	method teEncontro(jugador) {return self.teDejaPasar()}
+	override method image()= "escotilla.png"
 	
-	method teDejaPasar() {return true}
+	//method teEncontro(jugador) {return self.teDejaPasar()}
+	override method initialize() {
+		super() 
+		self.image("escotilla.png")	
+	}
+	
+	override method teDejaPasar() {return true}
 	
 	
 	//validar tripulantes y  sabotajes 
 	
 	
-	method serSaboteada() {
+	override method serSaboteada() {
+		nave.removerMision(self)
 		if (nave.sinTripulantes() && nave.sinSabotajes() && not nave.esElUltimoNivel()) {
 			nave.nivelActual().pasarDeNivel()
 			game.say(player, "Level up")

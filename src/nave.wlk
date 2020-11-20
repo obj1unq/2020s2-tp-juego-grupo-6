@@ -7,15 +7,21 @@ object nave {
 	
 	method agregarEnemigo(tripulante) {enemigosRestantes.add(tripulante)}
 	
-	method agregarSabojate(artefacto) {sabotajesRestantes.add(artefacto)}
+	method agregarSabotaje(artefacto) {sabotajesRestantes.add(artefacto)}
 	
 	method sinTripulantes() {return enemigosRestantes.isEmpty()}
 	
-	method sinSabotajes() {return sabotajesRestantes.isEmpty()}
+	method sinSabotajes() {return sabotajesRestantes.size() == 1}
 	
 	//mas adelante cambiar el numero de ultimo nivel
 	method esElUltimoNivel(){return nivelActual == nivel3}
 	
+	method removerTripulante(tripulante){
+		enemigosRestantes.remove(tripulante)
+	}	
 	
-	
+	method removerMision(mision){
+	 	sabotajesRestantes.remove(mision)
+	}
+
 }
