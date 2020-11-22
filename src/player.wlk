@@ -79,7 +79,7 @@ object player inherits Personajes{
 		game.schedule(3000, { game.stop()})
 	}
 	
-	method accion() {
+	method realizarAccion() {
 		if (self.hayMisionCerca()) {
 			self.sabotear()
 		} else {

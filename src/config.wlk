@@ -22,8 +22,6 @@ class Nivel {
 		game.clear()
 		config.configurarTeclas()
 		nave.nivelActual(self)
-		game.addVisual(new PasswordCode())
-		game.addVisual(new Cableado())
 		game.addVisual(new Escotilla())
 		game.addVisual(new MedBay())
 		game.addVisual(player)
@@ -38,7 +36,7 @@ class Nivel {
 	method pasarDeNivel() {self.siguienteNivel().iniciar()
 	}
 	
-	//method generarMisiones()
+	method generarMisiones()
 
 }
 
@@ -50,6 +48,8 @@ object nivel1 inherits Nivel {
 		super()
 		
 		game.boardGround("fondonivel1.jpg")
+		game.addVisual(new PasswordCode())
+		game.addVisual(new Cableado())
 		
 		// DIBUJAR PAREDES
 		
@@ -80,25 +80,26 @@ object nivel1 inherits Nivel {
 		// Misiones
 		generadorTripulantes.nuevoTripulante(3)
 		
-		//self.generarMisiones()
-		//}
+		}
 	
 		override method siguienteNivel() {return nivel2}
 	
-		//override method generarMisiones(){
-			//nave.agregarSabotaje(new Cableado()) 
-		//	nave.agregarSabotaje(new PasswordCode()) 
-			//nave.agregarSabotaje(new MedBay()) 			
-			
-	//	}	
+		override method generarMisiones(){
+			nave.agregarSabotaje(new Cableado()) 
+			nave.agregarSabotaje(new PasswordCode()) 
+		}	
 
 }
 
 object nivel2 inherits Nivel {
+	
 
 	override method iniciar() {
-		
+
 		super()
+		
+		game.addVisual(new Nafta())
+		game.addVisual(new Escudos())
 		self.dibujarPared(game.at(0, 5), 0, 1, 1)
 		self.dibujarPared(game.at(1, 2), 0, 1, 1)
 		self.dibujarPared(game.at(1, 4), 0, 1, 2)
@@ -127,10 +128,10 @@ object nivel2 inherits Nivel {
 	
 	override method siguienteNivel() {return nivel3}
 	
-	//override method generarMisiones(){
-		
-	//}
-
+	override method generarMisiones(){
+			nave.agregarSabotaje(new Escudos()) 
+			nave.agregarSabotaje(new Nafta()) 
+	}
 }
 
 object nivel3 inherits Nivel {
@@ -165,9 +166,9 @@ object nivel3 inherits Nivel {
 	
 	override method siguienteNivel() {}
 	
-	//override method generarMisiones(){
+	override method generarMisiones(){
 		
-	//}
+		}
 
 }
 
@@ -181,7 +182,7 @@ object config {
 		keyboard.right().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().right(1))})
 		keyboard.up().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().up(1))})
 		keyboard.down().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().down(1))})
-		keyboard.a().onPressDo({ player.accion()}) // accion para sabotear o matar
+		keyboard.a().onPressDo({ player.realizarAccion()}) // accion para sabotear o matar o pasar al siguiente nivel
 	}
 
 	method configurarColisiones() {

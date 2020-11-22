@@ -11,6 +11,8 @@ class Escotilla inherits Mision{
 	
 	override method image()= "escotilla.png"
 	
+	override method imagenSaboteada() {return "escotillaAbierta.png"}
+	
 	//method teEncontro(jugador) {return self.teDejaPasar()}
 	override method initialize() {
 		super() 

@@ -3,6 +3,7 @@ import nave.*
 import wollok.game.*
 import player.*
 
+
 class Mision {
 
 	var property fueSaboteada = false
@@ -94,8 +95,46 @@ class MedBay inherits Mision {
 	override method esMisionCercana(){
 		return self.position().distance(player.position()) == 0 
 	}
+}	
 	
+class Nafta inherits Mision{
+		
+	var property position = game.at(1,11)
+	
+	override method serSaboteada() {
+		super()
+		game.removeTickEvent("efectoNoSabotaje")	
+	}
+	
+	override method imagenSaboteada() {return "naftaSaboteada.png"}
+
+	override method initialize() {
+		super() 
+		self.image("naftaDefault.png")
+		game.onTick(5000, "efectoNoSabotaje", { player.esAtacado()})
+	}
+	
+}
+
+class Escudos inherits Mision{
+	
+	var property position = game.at(11,11)
+	
+	override method serSaboteada() {
+		super()
+		game.removeTickEvent("efectoNoSabotaje")	
+		
+	}
+	
+	override method imagenSaboteada() {return "escudosSaboteados.png"}
+
+	override method initialize() {
+		super() 
+		self.image("escudosDefault.png")
+		game.onTick(5000, "efectoNoSabotaje", { player.esAtacado()})
+	}
+}
 	 
 
-}
+
 
