@@ -36,8 +36,6 @@ class Nivel {
 	method pasarDeNivel() {self.siguienteNivel().iniciar()
 	}
 	
-	method generarMisiones()
-
 }
 
 object nivel1 inherits Nivel {
@@ -84,11 +82,6 @@ object nivel1 inherits Nivel {
 	
 		override method siguienteNivel() {return nivel2}
 	
-		override method generarMisiones(){
-			nave.agregarSabotaje(new Cableado()) 
-			nave.agregarSabotaje(new PasswordCode()) 
-		}	
-
 }
 
 object nivel2 inherits Nivel {
@@ -128,10 +121,6 @@ object nivel2 inherits Nivel {
 	
 	override method siguienteNivel() {return nivel3}
 	
-	override method generarMisiones(){
-			nave.agregarSabotaje(new Escudos()) 
-			nave.agregarSabotaje(new Nafta()) 
-	}
 }
 
 object nivel3 inherits Nivel {
@@ -165,10 +154,7 @@ object nivel3 inherits Nivel {
 	}
 	
 	override method siguienteNivel() {}
-	
-	override method generarMisiones(){
-		
-		}
+			
 
 }
 
