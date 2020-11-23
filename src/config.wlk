@@ -31,7 +31,7 @@ class Nivel {
 		config.configurarColisiones()
 		game.addVisual(barraVida)
 		config.tiempoDeJuego(60)
-		config.musica()
+		
 		self.dibujarParedInvisible(game.at(0, 11), 1, 0, 11)
 		self.dibujarParedInvisible(game.at(0, 11), 0, 0, 1)
 	}
@@ -54,6 +54,7 @@ object nivel1 inherits Nivel {
 	override method iniciar() {
 				
 		super()
+		config.musica()
 		
 		game.addVisual(new PasswordCode())
 		game.addVisual(new Cableado())			
