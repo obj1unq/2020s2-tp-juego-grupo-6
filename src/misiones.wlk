@@ -84,6 +84,7 @@ class MedBay inherits Mision {
 		if (not self.fueSaboteada()) {
 			player.vida(100)
 			fueSaboteada = true
+			nave.removerMision(self)
 		} else {
 			self.error("Ya fue utilizada")
 		}

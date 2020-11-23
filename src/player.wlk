@@ -88,11 +88,8 @@ object player inherits Personajes{
 	}
 
 	method sabotear() {
-		if (self.hayMisionCerca()) {
-			self.getMisionCercana().serSaboteada()
-		} else {
-			self.error("No hay una mision")
-		}
+		self.getMisionCercana().serSaboteada()
+		
 	}
  
 	method hayMisionCerca(){

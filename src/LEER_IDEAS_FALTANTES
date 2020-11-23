@@ -4,8 +4,7 @@ Implementar se puede animar y cambiar la imagen cuando camina [2]
 *CONFIG
 
 *GAME
-
-crear mas NIVELES aumentando los numeros de enemigos, tareas de sabotaje -> mas dificultad
+cambiar las paredes del lvl 2 segun el fondo de ese lvl en paredes
 
 *ENEMIGOS
 
@@ -13,14 +12,11 @@ animacion de caminar
 
 *MISIONES
 
-la imagen tiene que quedar atras del jugador y enemigo
 	
 reducir el tiempo de juego si esta arreglada -> podes perder si se agota todo el tiempo
 
-
-POLIMORFISMO
-el metodo sabotear y atacar se podrian llamar interacutar y estar en los objetos de enemigo misiones y escotillas
-  
+*ESCOTILLA
+que se vea la imagen de la escotilla abierta cuando pasa al lvl 2
  
 
 

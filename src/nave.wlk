@@ -14,7 +14,7 @@ object nave {
 	method sinSabotajes() {return sabotajesRestantes.size() == 1}
 	
 	//mas adelante cambiar el numero de ultimo nivel
-	method esElUltimoNivel(){return nivelActual == nivel3}
+//	method esElUltimoNivel(){return nivelActual == nivel3}
 	
 	method removerTripulante(tripulante){
 		enemigosRestantes.remove(tripulante)

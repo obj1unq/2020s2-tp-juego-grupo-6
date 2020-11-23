@@ -129,7 +129,7 @@ object nivel2 inherits Nivel {
 		generadorTripulantes.nuevoTripulante(7)
 	}
 	
-	override method siguienteNivel() {return nivel3}
+	override method siguienteNivel() {return nivel3DeCreditos}
 	
 	override method ponerFondo(){
 		game.addVisual(new BoardGround (image = "fondoLvl2.png"))
@@ -137,39 +137,16 @@ object nivel2 inherits Nivel {
 	
 }
 
-object nivel3 inherits Nivel {
+object nivel3DeCreditos {
 
-	override method iniciar() {
-		super()
-		self.dibujarPared(game.at(0, 5), 0, 1, 1)
-		self.dibujarPared(game.at(1, 2), 0, 1, 1)
-		self.dibujarPared(game.at(1, 4), 0, 1, 2)
-		self.dibujarPared(game.at(1, 7), 0, 1, 1)
-		self.dibujarPared(game.at(2, 2), 0, 1, 1)
-		self.dibujarPared(game.at(2, 4), 0, 1, 1)
-		self.dibujarPared(game.at(2, 7), 0, 1, 2)
-		self.dibujarPared(game.at(3, 1), 0, 1, 3)
-		self.dibujarPared(game.at(3, 6), 0, 1, 1)
-		self.dibujarPared(game.at(4, 3), 0, 1, 4)
-		self.dibujarPared(game.at(4, 8), 0, 1, 1)
-		self.dibujarPared(game.at(5, 2), 0, 1, 1)
-		self.dibujarPared(game.at(5, 5), 0, 1, 1)
-		self.dibujarPared(game.at(5, 9), 0, 1, 1)
-		self.dibujarPared(game.at(6, 1), 0, 1, 2)
-		self.dibujarPared(game.at(6, 5), 0, 1, 3)
-		self.dibujarPared(game.at(7, 3), 0, 1, 1)
-		self.dibujarPared(game.at(7, 6), 0, 1, 3)
-		self.dibujarPared(game.at(8, 0), 0, 1, 2)
-		self.dibujarPared(game.at(8, 3), 0, 1, 1)
-		self.dibujarPared(game.at(9, 1), 0, 1, 1)
-		self.dibujarPared(game.at(9, 3), 0, 1, 5) // Agregar muchas mas paredes
-		generadorTripulantes.nuevoTripulante(12)
+	method iniciar() {
+		game.clear()
+		self.ponerFondo()
 	}
 	
-	override method siguienteNivel() {}
 	
-	override method ponerFondo(){
-		game.addVisual(new BoardGround (image = "fondoDeLvl3.png"))
+	method ponerFondo(){
+		game.addVisual(new BoardGround (image = "creditos.png"))
 	}
 
 }

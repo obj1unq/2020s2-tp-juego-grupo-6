@@ -13,8 +13,7 @@ class Escotilla inherits Mision{
 	
 	override method imagenSaboteada() {return "escotillaAbierta.png"}
 	
-	//method teEncontro(jugador) {return self.teDejaPasar()}
-	override method initialize() {
+ 	override method initialize() {
 		super() 
 		self.image("escotilla.png")	
 	}
@@ -26,12 +25,10 @@ class Escotilla inherits Mision{
 	
 	
 	override method serSaboteada() {
-		nave.removerMision(self)
-		if (nave.sinTripulantes() && nave.sinSabotajes() && not nave.esElUltimoNivel()) {
+		if (nave.sinTripulantes() && nave.sinSabotajes()) {
+			nave.removerMision(self)
 			nave.nivelActual().pasarDeNivel()
 			game.say(player, "Level up")
-		}  else if (nave.sinTripulantes() && nave.sinSabotajes() && nave.esElUltimoNivel()) {
-			player.ganar()
 		} else {
 			self.error("No cumplis los requisitos para pasar de Nivel")
 		}
