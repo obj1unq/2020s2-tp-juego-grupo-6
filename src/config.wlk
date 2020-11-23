@@ -10,6 +10,8 @@ import vida.*
 import mainMenu.*
 
 class Nivel {
+	
+	
 	method dibujarPared(posicionInicial, direccionX, direccionY, cantidadAMover) {
 		cantidadAMover.times({ indice => game.addVisualIn(new Pared(), game.at(posicionInicial.x() + direccionX * indice, posicionInicial.y() + direccionY * indice))})
 	}
@@ -23,13 +25,15 @@ class Nivel {
 		self.ponerFondo()
 		config.configurarTeclas()
 		nave.nivelActual(self)
-		game.addVisual(new Escotilla())
 		game.addVisual(new MedBay())
-		game.addVisual(player)
+		game.addVisual(new Escotilla())
+		game.addVisual(player)	
 		config.configurarColisiones()
 		game.addVisual(barraVida)
 		config.tiempoDeJuego(60)
 		config.musica()
+		self.dibujarParedInvisible(game.at(0, 11), 1, 0, 11)
+		self.dibujarParedInvisible(game.at(0, 11), 0, 0, 1)
 	}
 	
 	method ponerFondo()
@@ -48,10 +52,13 @@ object nivel1 inherits Nivel {
 	}
 	
 	override method iniciar() {
+				
 		super()
 		
 		game.addVisual(new PasswordCode())
-		game.addVisual(new Cableado())
+		game.addVisual(new Cableado())			
+			
+		
 		
 		// DIBUJAR PAREDES
 		
@@ -74,10 +81,7 @@ object nivel1 inherits Nivel {
 		self.dibujarPared(game.at(6, 6), 0, 1, 2)
 		self.dibujarPared(game.at(7, 7), 0, 1, 2)
 		self.dibujarPared(game.at(3, 10), 1, 0, 2)
-		
-		// Paredes invisibles (pared en la imagen del fondo del nivel)
-		self.dibujarParedInvisible(game.at(0, 11), 1, 0, 11)
-		self.dibujarParedInvisible(game.at(0, 11), 0, 0, 1)
+				
 		
 		// Misiones
 		generadorTripulantes.nuevoTripulante(3)
@@ -89,10 +93,11 @@ object nivel1 inherits Nivel {
 }
 
 object nivel2 inherits Nivel {
-	
+ 	
 
 	override method iniciar() {
-
+		
+		
 		super()
 		
 		game.addVisual(new Nafta())
@@ -129,6 +134,7 @@ object nivel2 inherits Nivel {
 	override method ponerFondo(){
 		game.addVisual(new BoardGround (image = "fondoLvl2.png"))
 	}
+	
 }
 
 object nivel3 inherits Nivel {
@@ -182,7 +188,7 @@ object config {
 	}
 
 	method configurarColisiones() {
-		game.onTick(200, "Atacar enemigo", {=> nave.atacarAlEnemigo()})
+		game.onTick(200, "Atacar enemigo", {=> nave.ataqueDeEnemigoAlColisionar()})
 }
 
 

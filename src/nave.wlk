@@ -24,7 +24,7 @@ object nave {
 	 	sabotajesRestantes.remove(mision)
 	}
 	
-	  method atacarAlEnemigo(){
+	  method ataqueDeEnemigoAlColisionar(){
   		enemigosRestantes.forEach({tripulante => tripulante.atacarCuandoColisiona()})
 	}
 

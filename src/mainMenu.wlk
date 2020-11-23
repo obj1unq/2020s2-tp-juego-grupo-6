@@ -12,7 +12,9 @@ class BoardGround {
 	method position(){
 		return game.origin()
 	}
-	 
+	
+	method teDejaPasar() = true
+	
 }
 
 
