@@ -142,6 +142,9 @@ object nivel3DeCreditos {
 	method iniciar() {
 		game.clear()
 		self.ponerFondo()
+		game.addVisual(player)	
+		config.musica()
+		game.onTick(15000, "Ganar", {=>player.ganar()})
 	}
 	
 	

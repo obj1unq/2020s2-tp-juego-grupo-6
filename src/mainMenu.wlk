@@ -20,7 +20,7 @@ class BoardGround {
 
 object mainMenu {
 	
-	const board = new BoardGround (image = "board.jpg")
+	const board = new BoardGround (image = "fondoMenu.png")
 	const property visualesDelMenu = []
 	
 	
@@ -35,19 +35,13 @@ object mainMenu {
  	
  	method armarMenu(){
  		game.addVisual(board)
+ 		game.addVisual(titulo)
  		self.agregarVisual(nuevaPartida)
  		self.agregarVisual(comoJugar)
  		self.agregarVisual(cursor)	
  		self.configurarTeclado()	
  	}
- 	
- 		method image(){
- 			return "amunqUs.png"
- 		}
- 		
- 		method position(){
- 			return game.at(2, 8)
- 		}
+ 
  	
  	method getVisualDeMenu(indice){
  		return visualesDelMenu.get(indice).position().left(1)
@@ -61,6 +55,17 @@ object mainMenu {
 	}
 
 }
+
+	object titulo{
+	
+ 		method image(){
+ 			return "amunqUs.png"
+ 		}
+ 		
+ 		method position(){
+ 			return game.at(2, 10)
+ 		}
+}
  	
  	
  	object nuevaPartida{
@@ -69,7 +74,7 @@ object mainMenu {
  		}
  		
  		method position(){
- 			return game.at(2, 7)
+ 			return game.at(2, 5)
  			}
  		
  		method ejecutar(){
@@ -88,16 +93,17 @@ object mainMenu {
  		}
  		
  		method position(){
- 			return game.at(2, 5)
+ 			return game.at(2, 3)
  		}
  		
  		method ejecutar() {
 			game.clear()
-			game.addVisual(self.image())
+			game.addVisual(new BoardGround (image = "fondoComoJugar.jpg"))
 			keyboard.backspace().onPressDo({
 			game.clear()
 			mainMenu.armarMenu()})
 	}
+	
  }
 
 	object cursor{
