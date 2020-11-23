@@ -103,7 +103,7 @@ object nivel2 inherits Nivel {
 		
 		game.addVisual(new Nafta())
 		game.addVisual(new Escudos())
-		self.dibujarPared(game.at(0, 5), 0, 1, 1)
+		/*self.dibujarPared(game.at(0, 5), 0, 1, 1)
 		self.dibujarPared(game.at(1, 2), 0, 1, 1)
 		self.dibujarPared(game.at(1, 4), 0, 1, 2)
 		self.dibujarPared(game.at(1, 7), 0, 1, 1)
@@ -124,8 +124,9 @@ object nivel2 inherits Nivel {
 		self.dibujarPared(game.at(8, 0), 0, 1, 2)
 		self.dibujarPared(game.at(8, 3), 0, 1, 1)
 		self.dibujarPared(game.at(9, 1), 0, 1, 1)
-		self.dibujarPared(game.at(9, 3), 0, 1, 5) // Cambiar la posicion de las paredes segun el fondo nuevo agregado
-		
+		self.dibujarPared(game.at(9, 3), 0, 1, 5) 
+		* // Cambiar la posicion de las paredes segun el fondo nuevo agregado
+		*/
 		
 		generadorTripulantes.nuevoTripulante(7)
 	}
@@ -143,8 +144,7 @@ object nivel3DeCreditos {
 	method iniciar() {
 		game.clear()
 		self.ponerFondo()
-		game.addVisual(player)	
-		config.musica()
+		game.addVisual(player)
 		game.onTick(15000, "Ganar", {=>player.ganar()})
 	}
 	
