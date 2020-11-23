@@ -4,6 +4,7 @@ import wollok.game.*
 import player.*
 
 
+
 class Mision {
 
 	var property fueSaboteada = false

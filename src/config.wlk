@@ -7,9 +7,9 @@ import nave.*
 import escotilla.*
 import randomizer.*
 import vida.*
+import mainMenu.*
 
 class Nivel {
-
 	method dibujarPared(posicionInicial, direccionX, direccionY, cantidadAMover) {
 		cantidadAMover.times({ indice => game.addVisualIn(new Pared(), game.at(posicionInicial.x() + direccionX * indice, posicionInicial.y() + direccionY * indice))})
 	}
@@ -17,9 +17,10 @@ class Nivel {
 	method dibujarParedInvisible(posicionInicial, direccionX, direccionY, cantidadAMover) {
 		cantidadAMover.times({ indice => game.addVisualIn(new ParedInvisible(), game.at(posicionInicial.x() + direccionX * indice, posicionInicial.y() + direccionY * indice))})
 	}
-
+	
 	method iniciar() {
 		game.clear()
+		self.ponerFondo()
 		config.configurarTeclas()
 		nave.nivelActual(self)
 		game.addVisual(new Escotilla())
@@ -31,6 +32,8 @@ class Nivel {
 		config.musica()
 	}
 	
+	method ponerFondo()
+	
 	method siguienteNivel()
 	
 	method pasarDeNivel() {self.siguienteNivel().iniciar()
@@ -39,13 +42,14 @@ class Nivel {
 }
 
 object nivel1 inherits Nivel {
-
 	
-
+	override method ponerFondo(){
+		game.addVisual(new BoardGround (image = "fondoLvl1.png"))
+	}
+	
 	override method iniciar() {
 		super()
 		
-		game.boardGround("fondonivel1.jpg")
 		game.addVisual(new PasswordCode())
 		game.addVisual(new Cableado())
 		
@@ -114,13 +118,17 @@ object nivel2 inherits Nivel {
 		self.dibujarPared(game.at(8, 0), 0, 1, 2)
 		self.dibujarPared(game.at(8, 3), 0, 1, 1)
 		self.dibujarPared(game.at(9, 1), 0, 1, 1)
-		self.dibujarPared(game.at(9, 3), 0, 1, 5) // Agregar mas paredes
-		game.boardGround("fondonivel2.jpg") // no esta cambiando la foto cuando pasas de nivel arreglar eso
+		self.dibujarPared(game.at(9, 3), 0, 1, 5) // Cambiar la posicion de las paredes segun el fondo nuevo agregado
+		
+		
 		generadorTripulantes.nuevoTripulante(7)
 	}
 	
 	override method siguienteNivel() {return nivel3}
 	
+	override method ponerFondo(){
+		game.addVisual(new BoardGround (image = "fondoLvl2.png"))
+	}
 }
 
 object nivel3 inherits Nivel {
@@ -149,12 +157,14 @@ object nivel3 inherits Nivel {
 		self.dibujarPared(game.at(8, 3), 0, 1, 1)
 		self.dibujarPared(game.at(9, 1), 0, 1, 1)
 		self.dibujarPared(game.at(9, 3), 0, 1, 5) // Agregar muchas mas paredes
-		game.boardGround("fondonivel1.jpg") // Cambiar fondo
 		generadorTripulantes.nuevoTripulante(12)
 	}
 	
 	override method siguienteNivel() {}
-			
+	
+	override method ponerFondo(){
+		game.addVisual(new BoardGround (image = "fondoDeLvl3.png"))
+	}
 
 }
 
@@ -172,8 +182,11 @@ object config {
 	}
 
 	method configurarColisiones() {
-		game.onCollideDo(player, { algo => algo.teEncontro(player)})
-	}
+		game.onTick(200, "Atacar enemigo", {=> nave.atacarAlEnemigo()})
+}
+
+
+
 
 	method tiempoDeJuego(tiempo) {
 		game.schedule(tiempoDeJuego * tiempo, { player.perder()})

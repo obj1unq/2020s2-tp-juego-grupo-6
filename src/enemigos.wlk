@@ -1,6 +1,8 @@
 import wollok.game.*
 import personajes.*
 import direcciones.*
+import player.*
+import nave.*
 
 
 class Tripulante inherits Personajes{
@@ -60,5 +62,12 @@ class Tripulante inherits Personajes{
 			}
 		}
 	}
+	
+	method atacarCuandoColisiona(){
+		if (self.position().distance(player.position()) == 0){
+			player.esAtacado()
+	}
+  }
 
 }
+
