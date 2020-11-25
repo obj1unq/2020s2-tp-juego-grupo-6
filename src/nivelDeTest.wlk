@@ -5,6 +5,7 @@ import misiones.*
 import player.*
 import enemigos.*
 import paredes.*
+import nave.*
 
 
 object nivelDeTest inherits Nivel{
@@ -17,7 +18,11 @@ object nivelDeTest inherits Nivel{
 		return nivel3DeCreditos
 	}
 	
-	
+	override method iniciar() {
+		nave.nivelActual(self)
+		game.addVisual(player)	
+		config.configurarColisiones()
+	}
 	
 	
 	
