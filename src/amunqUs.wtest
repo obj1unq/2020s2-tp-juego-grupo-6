@@ -36,7 +36,7 @@ describe "amunqUs Test" {
 		
 	}
 	
-	test "Actores en posicion" {
+	test "Actores en el tablero" {
 		assert.that(game.hasVisual(player))
 		assert.that(game.hasVisual(tripulante1))
 		assert.that(game.hasVisual(cableado))
