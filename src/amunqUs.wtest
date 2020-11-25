@@ -1,6 +1,46 @@
+import config.*
+import wollok.game.*
+import mainMenu.*
+import misiones.*
+import player.*
+import enemigos.*
+import paredes.*
+import nivelDeTest.*
 
-test "testX" {
-
-	assert.that(true)
-
+describe "amunqUs Test" {
+	
+	const tripulante1 = new Tripulante(image = "tVerde.png", position = game.at(6,2))
+	const tripulante2 = new Tripulante(image = "tripulanteAmarillo.png", position = game.at(4,6))
+	const pared = new Pared()
+	const cableado = new Cableado()
+	const password = new PasswordCode()
+	const medBay = new MedBay()
+	
+	fixture {
+		game.clear()
+		nivelDeTest.iniciar()
+		game.addVisual(tripulante1)
+		game.addVisual(tripulante2)
+		game.addVisualIn(pared, game.at(1,4))
+		game.addVisual(cableado)
+		game.addVisual(password)
+		game.addVisual(medBay)
+	}
+	
+	test "Actores en posicion" {
+		assert.that(game.hasVisual(player))
+		assert.that(game.hasVisual(tripulante1))
+		assert.that(game.hasVisual(cableado))
+		assert.that(game.hasVisual(tripulante2))
+		assert.that(game.hasVisual(password))
+		assert.that(game.hasVisual(medBay))	
+	}
+	
+	test "posiciones de actores" {
+		assert.equals(game.origin(), player.position())
+		assert.equals(game.at(1,11), cableado.position())
+		assert.equals(game.at(11,11), password.position())
+		assert.equals(game.at(0,8), medBay.position())
+	}
+	
 }
