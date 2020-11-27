@@ -26,7 +26,7 @@ class Nivel {
 		config.configurarTeclas()
 		nave.nivelActual(self)
 		game.addVisual(new MedBay())
-		game.addVisual(new Escotilla())
+		game.addVisual(new Escotilla(position = game.at(3, 5), image = "escotilla.png"))
 		game.addVisual(player)	
 		config.configurarColisiones()
 		game.addVisual(barraVida)
@@ -85,7 +85,7 @@ object nivel1 inherits Nivel {
 				
 		
 		// Misiones
-		generadorTripulantes.nuevoTripulante(3)
+		generadorTripulantes.nuevoTripulante(5)
 		
 		}
 	
@@ -98,38 +98,29 @@ object nivel2 inherits Nivel {
 
 	override method iniciar() {
 		
-		
-		super()
-		
+		game.clear()
+		self.ponerFondo()
+		config.configurarTeclas()
+		nave.nivelActual(self)
+		game.addVisual(new MedBay())
+		game.addVisual(player)	
+		config.configurarColisiones()
+		game.addVisual(barraVida)
+		config.tiempoDeJuego(60)
+		player.position(game.origin())
+		game.addVisual(new Escotilla(position = game.at(5, 5), image = "escotilla.png"))
 		game.addVisual(new Nafta())
 		game.addVisual(new Escudos())
-		/*self.dibujarPared(game.at(0, 5), 0, 1, 1)
-		self.dibujarPared(game.at(1, 2), 0, 1, 1)
-		self.dibujarPared(game.at(1, 4), 0, 1, 2)
-		self.dibujarPared(game.at(1, 7), 0, 1, 1)
-		self.dibujarPared(game.at(2, 2), 0, 1, 1)
-		self.dibujarPared(game.at(2, 4), 0, 1, 1)
-		self.dibujarPared(game.at(2, 7), 0, 1, 2)
-		self.dibujarPared(game.at(3, 1), 0, 1, 3)
-		self.dibujarPared(game.at(3, 6), 0, 1, 1)
-		self.dibujarPared(game.at(4, 3), 0, 1, 4)
-		self.dibujarPared(game.at(4, 8), 0, 1, 1)
-		self.dibujarPared(game.at(5, 2), 0, 1, 1)
-		self.dibujarPared(game.at(5, 5), 0, 1, 1)
-		self.dibujarPared(game.at(5, 9), 0, 1, 1)
-		self.dibujarPared(game.at(6, 1), 0, 1, 2)
-		self.dibujarPared(game.at(6, 5), 0, 1, 3)
-		self.dibujarPared(game.at(7, 3), 0, 1, 1)
-		self.dibujarPared(game.at(7, 6), 0, 1, 3)
-		self.dibujarPared(game.at(8, 0), 0, 1, 2)
-		self.dibujarPared(game.at(8, 3), 0, 1, 1)
-		self.dibujarPared(game.at(9, 1), 0, 1, 1)
-		self.dibujarPared(game.at(9, 3), 0, 1, 5) 
-		* // Cambiar la posicion de las paredes segun el fondo nuevo agregado
-		*/
-		
 		generadorTripulantes.nuevoTripulante(7)
+		self.dibujarParedInvisible(game.at(-1, 2), 1, 0, 3)
+		self.dibujarParedInvisible(game.at(0, 5), 0, 0, 1)
+		self.dibujarParedInvisible(game.at(1, 5), 1, 0, 2)
+		self.dibujarParedInvisible(game.at(3, 5), 0, 1, 6)
+		self.dibujarParedInvisible(game.at(6, 2), 0, 0, 1)
+		self.dibujarParedInvisible(game.at(8, 2), 1, 0, 3)
+		
 	}
+	
 	
 	override method siguienteNivel() {return nivel3DeCreditos}
 	

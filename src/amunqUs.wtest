@@ -18,7 +18,7 @@ describe "amunqUs Test" {
 	const cableado = new Cableado()
 	const password = new PasswordCode()
 	const medBay = new MedBay()
-	const escotilla = new Escotilla()
+	const escotilla = new Escotilla(position = game.at(3,5), image = "escotilla.png")
 	
 	
 	fixture {
@@ -53,8 +53,8 @@ describe "amunqUs Test" {
 		assert.equals(game.at(1,11), cableado.position())
 		assert.equals(game.at(11,11), password.position())
 		assert.equals(game.at(0,8), medBay.position())
-		assert.equals(game.at(3,5), escotilla.position())
 		assert.equals(game.at(6,2), tripulante1.position())
+		
 		
 	}
 	
@@ -84,7 +84,7 @@ describe "amunqUs Test" {
 		player.sabotear()
 		assert.that(medBay.fueSaboteada())
 		assert.equals([escotilla], nave.sabotajesRestantes())
-		player.position(game.at(3,6))
+		player.position(game.at(3,5))
 		player.sabotear()
         assert.that(escotilla.fueSaboteada()) //Podemos pasar de nivel
 	}

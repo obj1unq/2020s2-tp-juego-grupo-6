@@ -7,7 +7,7 @@ import misiones.*
 
 class Escotilla inherits Mision{
 
- 	var property position = game.at(3, 5)
+ 	var property position 
 	
 	override method image()= "escotilla.png"
 	
@@ -19,6 +19,10 @@ class Escotilla inherits Mision{
 	}
 	
 	override method teDejaPasar() {return true}
+	
+	override method esMisionCercana(){
+		return self.position().distance(player.position()) == 0 
+	}
 	
 	
 	//validar tripulantes y  sabotajes 
