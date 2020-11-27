@@ -112,12 +112,13 @@ object nivel2 inherits Nivel {
 		game.addVisual(new Nafta())
 		game.addVisual(new Escudos())
 		generadorTripulantes.nuevoTripulante(7)
-		self.dibujarPared(game.at(4, 6), 0, 1, 2)
+		
+		/*self.dibujarPared(game.at(4, 6), 0, 1, 2)
 		self.dibujarPared(game.at(5, 7), 1, 0, 4)
 		self.dibujarPared(game.at(5, 9), 1, 0, 1)	
 		self.dibujarPared(game.at(7, 7), 0, 1, 2)
 		self.dibujarPared(game.at(8, 5), 0, 0, 1)
-		self.dibujarPared(game.at(9, 4), 0, 1, 5)
+		self.dibujarPared(game.at(9, 4), 0, 1, 5)*/
 		
 		self.dibujarParedInvisible(game.at(-1, 2), 1, 0, 3)
 		self.dibujarParedInvisible(game.at(0, 5), 0, 0, 1)
@@ -125,6 +126,8 @@ object nivel2 inherits Nivel {
 		self.dibujarParedInvisible(game.at(3, 5), 0, 1, 6)
 		self.dibujarParedInvisible(game.at(6, 2), 0, 0, 1)
 		self.dibujarParedInvisible(game.at(8, 2), 1, 0, 3)
+		
+		//parte de arriba
 		self.dibujarParedInvisible(game.at(0, 11), 1, 0, 11)
 		self.dibujarParedInvisible(game.at(0, 11), 0, 0, 1)
 		
@@ -145,6 +148,7 @@ object nivel3DeCreditos {
 		game.clear()
 		self.ponerFondo()
 		config.configurarTeclas()
+		//tendriamos que sacar el player ya no se usa
 		game.addVisual(player)
 		game.onTick(15000, "Ganar", {=>player.ganar()})
 	}

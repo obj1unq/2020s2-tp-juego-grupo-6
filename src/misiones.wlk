@@ -147,7 +147,7 @@ class Escudos inherits Mision{
 	}
 	
 	method dibujarParedAleatoria(){
-		nivel2.dibujarPared(randomizer.emptyPosition(), 0, 0, 0)
+		nivel2.dibujarPared(randomizer.emptyPosition(), 0, 0, 1)
 		
 	}
 	
