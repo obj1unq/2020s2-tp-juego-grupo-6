@@ -10,7 +10,7 @@ class Mision {
 	var property fueSaboteada = false
 	var property image
 	
-	method position()
+	method position() 
 
 	method serSaboteada() {
 		image = self.imagenSaboteada()
@@ -26,6 +26,8 @@ class Mision {
 	method imagenSaboteada()
 
    override method initialize() {nave.agregarSabotaje(self)}
+   
+   
 	
 	method esMisionCercana(){
 		return self.position().distance(player.position()) <= 1 
@@ -41,7 +43,7 @@ class Mision {
 class PasswordCode inherits Mision {
 
 	
-	var property position = game.at(11, 11)
+	override method position() = game.at(11, 11)
 
 	override method serSaboteada() {
 		super()
@@ -49,6 +51,7 @@ class PasswordCode inherits Mision {
 		
 		
 	}
+	
 	
 	override method imagenSaboteada() {return "passwordRedCode.png"}
 
@@ -62,7 +65,7 @@ class PasswordCode inherits Mision {
 
 class Cableado inherits Mision {  
 
-	var property position = game.at(1, 11)
+	override method position() = game.at(1, 11)
 
 	override method serSaboteada() {
 		super()
@@ -90,6 +93,8 @@ class MedBay inherits Mision {
 		}
 	}
 	
+	
+	
 	override method imagenSaboteada() {}
 	
 	override method initialize() {super() self.image("MedBay.png")}
@@ -101,7 +106,7 @@ class MedBay inherits Mision {
 	
 class Nafta inherits Mision{
 		
-	var property position = game.at(1,11)
+	override method position() = game.at(1,11)
 	
 	override method serSaboteada() {
 		super()
@@ -116,11 +121,13 @@ class Nafta inherits Mision{
 		game.onTick(5000, "efectoNoSabotaje", { player.esAtacado()})
 	}
 	
+	
+	
 }
 
 class Escudos inherits Mision{
 	
-	var property position = game.at(11,11)
+	override method position() = game.at(11,11)
 	
 	override method serSaboteada() {
 		super()
@@ -135,6 +142,8 @@ class Escudos inherits Mision{
 		self.image("escudosDefault.png")
 		game.onTick(5000, "efectoNoSabotaje", { player.esAtacado()})
 	}
+	
+	
 }
 	 
 
