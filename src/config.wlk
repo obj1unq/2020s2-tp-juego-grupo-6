@@ -207,7 +207,7 @@ object generadorTripulantes {
 			game.addVisual(nuevoTripulante)
 			tripulantesGenerados.add(nuevoTripulante)
 			nave.agregarEnemigo(nuevoTripulante)
-			game.onTick(1000, "Enemigo se mueve", {=> nuevoTripulante.caminar(nuevoTripulante.moverseRandom())})
+			game.onTick(500, "Enemigo se mueve", {=> nuevoTripulante.caminar(nuevoTripulante.moverseRandom())})
 		}
 	}
 

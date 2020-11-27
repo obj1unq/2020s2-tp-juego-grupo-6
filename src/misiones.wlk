@@ -169,7 +169,7 @@ object botonMisterioso inherits Mision{
 			fueSaboteada = true
 			game.addVisual(pepita)
 			nave.agregarEnemigo(pepita)
-			game.onTick(500, "pepitaSeMueve", {pepita.caminar(pepita.moverseRandom())})
+			pepita.moverse()
 	}
 	
 	override method imagenSaboteada() {return "Jaula.png"}

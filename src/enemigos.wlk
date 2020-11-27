@@ -91,6 +91,8 @@ object pepita inherits Tripulante{
 		game.say(player, "Te atrape!")
 	}
 	
+	method moverse() {game.onTick(200, "pepitaSeMueve", {self.caminar(self.moverseRandom())})}
+	
 	
 }
 
