@@ -120,7 +120,7 @@ object mainMenu {
  	}
  	
  	method finalDelMenu() {
- 		return mainMenu.visualesDelMenu().size() - 2
+ 		return 1
  	}
  		
  		method visualIndicada(){
