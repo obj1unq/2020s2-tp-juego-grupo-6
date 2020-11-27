@@ -143,7 +143,7 @@ object nivel3DeCreditos {
 	
 	
 	method ponerFondo(){
-		game.addVisual(new BoardGround (image = "creditos.png"))
+		game.addVisual(new BoardGround (image = "creditosAmunqUs.png"))
 	}
 
 }
