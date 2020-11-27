@@ -102,7 +102,7 @@ object nivel2 inherits Nivel {
 		self.ponerFondo()
 		config.configurarTeclas()
 		nave.nivelActual(self)
-		game.addVisual(new MedBay())
+		game.addVisual(new MedBay(position = game.at(9, 1), image = "MedBay.png"))
 		game.addVisual(new Escotilla(position = game.at(5, 5), image = "escotilla.png"))
 		game.addVisual(player)	
 		config.configurarColisiones()
