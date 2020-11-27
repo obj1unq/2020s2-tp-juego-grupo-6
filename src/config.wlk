@@ -169,7 +169,7 @@ object config {
 
 
 	method tiempoDeJuego(tiempo) {
-		game.schedule(tiempoDeJuego * tiempo, { player.perder()})
+		game.schedule( tiempoDeJuego * tiempo, { player.perder() } )
 		game.say(player, "Tenés 1 minuto para sabotear la nave y matar a los tripulantes")
 	}
 

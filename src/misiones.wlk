@@ -2,6 +2,7 @@ import config.*
 import nave.*
 import wollok.game.*
 import player.*
+import randomizer.*
 
 
 
@@ -20,12 +21,13 @@ class Mision {
 
 	method teDejaPasar() = true
 
-	method teEncontro(player){
-	}
+	method teEncontro(player){}
 	
 	method imagenSaboteada()
 
-   override method initialize() {nave.agregarSabotaje(self)}
+   override method initialize() {
+   		nave.agregarSabotaje(self)
+   }
    
    
 	
@@ -75,7 +77,8 @@ class Cableado inherits Mision {
 	
 	override method imagenSaboteada() {return "cablesSaboteados.png"}
 	
-	override method initialize() {super() self.image("cablesConectados.png")		
+	override method initialize() {
+		super() self.image("cablesConectados.png")		
 	}
 }
 
@@ -87,7 +90,7 @@ class MedBay inherits Mision {
 		if (not self.fueSaboteada()) {
 			player.vida(100)
 			fueSaboteada = true
-			nave.removerMision(self)
+			//saque el remove 
 		} else {
 			self.error("Ya fue utilizada")
 		}
@@ -97,8 +100,8 @@ class MedBay inherits Mision {
 	
 	override method imagenSaboteada() {}
 	
-	override method initialize() {super() self.image("MedBay.png")}
-	
+	override method initialize() {self.image("MedBay.png")}
+	//saque el super 
 	override method esMisionCercana(){
 		return self.position().distance(player.position()) == 0 
 	}
@@ -131,7 +134,7 @@ class Escudos inherits Mision{
 	
 	override method serSaboteada() {
 		super()
-		game.removeTickEvent("efectoNoSabotaje")	
+		game.removeTickEvent("efectoEscudos")	
 		
 	}
 	
@@ -140,9 +143,13 @@ class Escudos inherits Mision{
 	override method initialize() {
 		super() 
 		self.image("escudosDefault.png")
-		game.onTick(5000, "efectoNoSabotaje", { player.esAtacado()})
+		game.onTick(5000, "efectoEscudos", { self.dibujarParedAleatoria()})
 	}
 	
+	method dibujarParedAleatoria(){
+		nivel2.dibujarPared(randomizer.emptyPosition(), 0, 0, 0)
+		
+	}
 	
 }
 	 
