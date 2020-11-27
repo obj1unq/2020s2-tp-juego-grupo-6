@@ -18,6 +18,18 @@ class BoardGround {
 }
 
 
+class VisualesDelMenu{
+	
+	method image()
+	
+	method position()
+	
+	method ejecutar(){
+			game.clear()
+	}
+	
+}
+
 object mainMenu {
 	
 	const board = new BoardGround (image = "fondoMenu.png")
@@ -38,6 +50,7 @@ object mainMenu {
  		game.addVisual(titulo)
  		self.agregarVisual(nuevaPartida)
  		self.agregarVisual(comoJugar)
+ 		self.agregarVisual(misiones)
  		self.agregarVisual(cursor)	
  		self.configurarTeclado()	
  	}
@@ -68,42 +81,62 @@ object mainMenu {
 }
  	
  	
- 	object nuevaPartida{
- 		method image(){
+ 	object nuevaPartida inherits VisualesDelMenu{
+ 		override method image(){
  			return "nuevaPartida.png"
  		}
  		
- 		method position(){
- 			return game.at(2, 5)
+ 		override method position(){
+ 			return game.at(2, 6)
  			}
  		
- 		method ejecutar(){
- 			game.clear()
- 			nivel1.iniciar()
+ 		override method ejecutar(){
+			super()
+			nivel1.iniciar()
  		}
  		
-
 }
 
 
-	object comoJugar{
+	object comoJugar inherits VisualesDelMenu{
 		
- 		method image(){
+ 		override method image(){
  			return "comoJugar.png"
  		}
  		
- 		method position(){
- 			return game.at(2, 3)
+ 		override method position(){
+ 			return game.at(2, 4)
  		}
  		
- 		method ejecutar() {
-			game.clear()
+ 		override method ejecutar() {
+			super()
 			game.addVisual(new BoardGround (image = "fondoComoJugar.jpg"))
 			keyboard.backspace().onPressDo({
 			game.clear()
 			mainMenu.armarMenu()})
 	}
 	
+ }
+ 
+ object misiones inherits VisualesDelMenu{
+ 	
+ 	override method image(){
+ 		return "misiones.png"
+ 	}
+ 	
+ 	override method position(){
+ 		return game.at(2, 2)
+ 		
+ 	}
+ 	
+ 	override method ejecutar(){
+ 		super()
+ 		game.addVisual(new BoardGround (image = "fondoDeMisionesMenu.jpg"))
+ 		keyboard.backspace().onPressDo({
+ 		game.clear()
+ 		mainMenu.armarMenu()})
+ 	}
+ 	
  }
 
 	object cursor{
@@ -120,7 +153,7 @@ object mainMenu {
  	}
  	
  	method finalDelMenu() {
- 		return 1
+ 		return 2
  	}
  		
  		method visualIndicada(){
@@ -156,5 +189,5 @@ object mainMenu {
 	
 	
 	
-	}
+}
  
