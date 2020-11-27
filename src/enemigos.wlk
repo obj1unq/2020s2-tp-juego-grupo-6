@@ -82,15 +82,14 @@ object pepita inherits Tripulante{
 		return game.at(8, 10)
 	}
 	
-	override  method teEncontro(player){
-		game.removeVisual(self)
-	}
-	
 	override method atacar(player) {}
 	
 	override method esAtacado(){
-		game.removeVisual(self)
+	    game.removeVisual(self)
+	    nave.removerTripulante(self)
 		nave.removerMision(botonMisterioso)
 	}
+	
+	
 }
 

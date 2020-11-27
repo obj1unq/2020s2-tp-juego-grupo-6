@@ -97,18 +97,11 @@ object nivel2 inherits Nivel {
  	
 
 	override method iniciar() {
+		super()
 		
-		game.clear()
-		self.ponerFondo()
-		config.configurarTeclas()
-		nave.nivelActual(self)
-		game.addVisual(new MedBay(position = game.at(9, 1), image = "MedBay.png"))
+		
 		game.addVisual(new Escotilla(position = game.at(5, 5), image = "escotilla.png"))
 		game.addVisual(botonMisterioso)
-		game.addVisual(player)	
-		config.configurarColisiones()
-		game.addVisual(barraVida)
-		config.tiempoDeJuego(60)
 		player.position(game.origin())
 		game.addVisual(new Nafta())
 		game.addVisual(new Escudos())
