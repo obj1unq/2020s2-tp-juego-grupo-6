@@ -88,6 +88,7 @@ object pepita inherits Tripulante{
 	    game.removeVisual(self)
 	    nave.removerTripulante(self)
 		nave.removerMision(botonMisterioso)
+		game.say(player, "Te atrape!")
 	}
 	
 	
