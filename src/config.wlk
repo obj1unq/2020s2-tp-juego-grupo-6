@@ -8,6 +8,7 @@ import escotilla.*
 import randomizer.*
 import vida.*
 import mainMenu.*
+import direcciones.*
 
 class Nivel {
 	
@@ -53,7 +54,7 @@ object nivel1 inherits Nivel {
 	override method iniciar() {
 				
 		super()
-		config.musica()
+		//config.musica()
 		
 		game.addVisual(new PasswordCode())
 		game.addVisual(new Cableado())			
@@ -160,10 +161,10 @@ object config {
 
 	// TECLAS
 	method configurarTeclas() { // rompe encapsulamiento
-		keyboard.left().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().left(1))})
-		keyboard.right().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().right(1))})
-		keyboard.up().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().up(1))})
-		keyboard.down().onPressDo({ player.irASiSeMantieneEnLaPantalla(player.position().down(1))})
+		keyboard.left().onPressDo({ player.irASiSeMantieneEnLaPantalla(izquierda)}) 
+		keyboard.right().onPressDo({ player.irASiSeMantieneEnLaPantalla(derecha)})
+		keyboard.up().onPressDo({ player.irASiSeMantieneEnLaPantalla(arriba)})
+		keyboard.down().onPressDo({ player.irASiSeMantieneEnLaPantalla(abajo)})
 		keyboard.a().onPressDo({ player.realizarAccion()}) // accion para sabotear o matar o pasar al siguiente nivel
 	}
 

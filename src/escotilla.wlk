@@ -29,11 +29,10 @@ class Escotilla inherits Mision{
 	
 	
 	override method serSaboteada() {
-		fueSaboteada = true
 		self.validarTripulantes()
 		self.validarMisiones()
+		super()
 		nave.nivelActual().pasarDeNivel()
-		nave.removerMision(self)
 		game.say(player, "Level up")
 		
 	}

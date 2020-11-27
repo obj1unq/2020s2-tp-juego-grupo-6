@@ -18,5 +18,8 @@ reducir el tiempo de juego si esta arreglada -> podes perder si se agota todo el
 *ESCOTILLA
 que se vea la imagen de la escotilla abierta cuando pasa al lvl 2
  
-
+IMORTANTE: 1-Coleccion polimorfica de nave
+           2-Usar las imagenes como metodo
+           3-No remover misiones y tripulantes de la coleccion, consultar condiciones
+           4-El reloj
 

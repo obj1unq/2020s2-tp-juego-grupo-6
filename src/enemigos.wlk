@@ -12,6 +12,7 @@ class Tripulante inherits Personajes{
 	var property image
 	var property position
 	const property direcciones = [arriba, abajo, izquierda, derecha]
+	// Tener el color como atributo y image como metodo.
  
 	method muerto() {
 		return vida == 0
@@ -37,7 +38,7 @@ class Tripulante inherits Personajes{
 		vida = 0
 	}
 
-	method colorMuerto() {
+	method colorMuerto() { //Hacer metodo que modele imagen.
 		if (self.image() == "tripulanteAmarillo.png") {
 			self.image("deadAmarillo.png")
 		} else if (self.image() == "tRojo.png") {
@@ -78,9 +79,6 @@ object pepita inherits Tripulante{
 		return "pepita.png"
 	}
 	
-	override method position(){
-		return game.at(8, 10)
-	}
 	
 	override method atacar(player) {}
 	

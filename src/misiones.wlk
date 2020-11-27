@@ -10,7 +10,7 @@ import enemigos.*
 class Mision {
 
 	var property fueSaboteada = false
-	var property image
+	var property image //Image deberia ser un metodo.
 	
 	method position() 
 
@@ -109,7 +109,7 @@ class MedBay inherits Mision {
 	//preguntar al profe q hay q hacer 
 	 
 	override method esMisionCercana(){
-		return self.position().distance(player.position()) == 0 
+		return self.position() == player.position()
 	}
 }	
 	
@@ -167,6 +167,7 @@ object botonMisterioso inherits Mision{
 			image = self.imagenSaboteada()
 			game.say(self, "Atrapa a Pepita")
 			fueSaboteada = true
+			pepita.position(game.at(8,10))
 			game.addVisual(pepita)
 			nave.agregarEnemigo(pepita)
 			pepita.moverse()

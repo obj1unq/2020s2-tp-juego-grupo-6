@@ -16,7 +16,8 @@ object player inherits Personajes{
 	
 
 	// Movimientos
-	method irASiSeMantieneEnLaPantalla(nuevaPosicion) {
+	method irASiSeMantieneEnLaPantalla(direccion) {
+		const nuevaPosicion = direccion.siguiente(self.position())
 		if (self.estaDentroDeLaPantalla(nuevaPosicion)) {
 			self.irA(nuevaPosicion)
 		}
