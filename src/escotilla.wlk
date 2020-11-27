@@ -46,7 +46,7 @@ class Escotilla inherits Mision{
 	
 	method validarMisiones(){
 		if (not nave.sinSabotajes()){
-			self.error("No saboteaste todas las misiones")
+			self.error("Hay misiones sin sabotear")
 		}
 	}
 }

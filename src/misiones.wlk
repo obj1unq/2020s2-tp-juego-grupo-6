@@ -90,7 +90,7 @@ class MedBay inherits Mision {
 		if (not self.fueSaboteada()) {
 			player.vida(100)
 			fueSaboteada = true
-			//saque el remove 
+			nave.removerMision(self)
 		} else {
 			self.error("Ya fue utilizada")
 		}
@@ -100,8 +100,13 @@ class MedBay inherits Mision {
 	
 	override method imagenSaboteada() {}
 	
-	override method initialize() {self.image("MedBay.png")}
-	//saque el super 
+	override method initialize() {super() self.image("MedBay.png")}
+	//no deberia ser super ya q la idea del juego es q no sea necesario
+	//para pasar de nivel pero si le saco el super y el remove en
+	// el method serSaboteada() no cura mas
+	
+	//preguntar al profe q hay q hacer 
+	 
 	override method esMisionCercana(){
 		return self.position().distance(player.position()) == 0 
 	}
