@@ -3,6 +3,7 @@ import nave.*
 import wollok.game.*
 import player.*
 import randomizer.*
+import enemigos.*
 
 
 
@@ -155,6 +156,27 @@ class Escudos inherits Mision{
 		nivel2.dibujarPared(randomizer.emptyPosition(), 0, 0, 1)
 		
 	}
+	
+}
+
+object botonMisterioso inherits Mision{
+	
+	override method position() = game.at(6,11)
+	
+	override method serSaboteada() {
+			image = self.imagenSaboteada()
+			game.say(self, "Atrapa a Pepita")
+			fueSaboteada = true
+			game.addVisual(pepita)
+	}
+	
+	override method imagenSaboteada() {return "Jaula.png"}
+	
+	override method initialize() {
+		super() 
+		self.image("botonMisterioso.png")
+		
+		}
 	
 }
 	 

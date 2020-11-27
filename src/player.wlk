@@ -100,4 +100,5 @@ object player inherits Personajes{
 		return nave.sabotajesRestantes().filter({mision=> mision.esMisionCercana()}).anyOne()
 	}
 	
+	
 }

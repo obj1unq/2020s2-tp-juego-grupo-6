@@ -26,7 +26,6 @@ class Nivel {
 		config.configurarTeclas()
 		nave.nivelActual(self)
 		game.addVisual(new MedBay())
-		game.addVisual(new Escotilla(position = game.at(3, 5), image = "escotilla.png"))
 		game.addVisual(player)	
 		config.configurarColisiones()
 		game.addVisual(barraVida)
@@ -82,7 +81,8 @@ object nivel1 inherits Nivel {
 		self.dibujarPared(game.at(6, 6), 0, 1, 2)
 		self.dibujarPared(game.at(7, 7), 0, 1, 2)
 		self.dibujarPared(game.at(3, 10), 1, 0, 2)
-				
+		
+		game.addVisual(new Escotilla(position = game.at(3, 5), image = "escotilla.png"))		
 		
 		// Misiones
 		generadorTripulantes.nuevoTripulante(5)
@@ -104,6 +104,7 @@ object nivel2 inherits Nivel {
 		nave.nivelActual(self)
 		game.addVisual(new MedBay(position = game.at(9, 1), image = "MedBay.png"))
 		game.addVisual(new Escotilla(position = game.at(5, 5), image = "escotilla.png"))
+		game.addVisual(botonMisterioso)
 		game.addVisual(player)	
 		config.configurarColisiones()
 		game.addVisual(barraVida)
@@ -176,8 +177,6 @@ object config {
 	method configurarColisiones() {
 		game.onTick(200, "Atacar enemigo", {=> nave.ataqueDeEnemigoAlColisionar()})
 }
-
-
 
 
 	method tiempoDeJuego(tiempo) {

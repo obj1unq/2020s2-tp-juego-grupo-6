@@ -3,6 +3,7 @@ import personajes.*
 import direcciones.*
 import player.*
 import nave.*
+import misiones.*
 
 
 class Tripulante inherits Personajes{
@@ -69,5 +70,27 @@ class Tripulante inherits Personajes{
 	}
   }
 
+}
+
+object pepita inherits Tripulante{
+	
+	override method image(){
+		return "pepita.png"
+	}
+	
+	override method position(){
+		return game.at(8, 10)
+	}
+	
+	override  method teEncontro(player){
+		game.removeVisual(self)
+	}
+	
+	override method atacar(player) {}
+	
+	override method esAtacado(){
+		game.removeVisual(self)
+		nave.removerMision(botonMisterioso)
+	}
 }
 
