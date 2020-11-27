@@ -30,14 +30,24 @@ class Escotilla inherits Mision{
 	
 	override method serSaboteada() {
 		fueSaboteada = true
-		if (nave.sinTripulantes() && nave.sinSabotajes()) {
-			nave.nivelActual().pasarDeNivel()
-			nave.removerMision(self)
-			game.say(player, "Level up")
-		} else {
-			self.error("No cumplis los requisitos para pasar de Nivel")
+		self.validarTripulantes()
+		self.validarMisiones()
+		nave.nivelActual().pasarDeNivel()
+		nave.removerMision(self)
+		game.say(player, "Level up")
+		
+	}
+	
+	method validarTripulantes(){
+		if (not nave.sinTripulantes()){
+			self.error("Hay tripulantes vivos")
 		}
 	}
-
+	
+	method validarMisiones(){
+		if (not nave.sinSabotajes()){
+			self.error("No saboteaste todas las misiones")
+		}
+	}
 }
 
