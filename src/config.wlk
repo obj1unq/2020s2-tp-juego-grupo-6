@@ -118,6 +118,8 @@ object nivel2 inherits Nivel {
 		self.dibujarParedInvisible(game.at(3, 5), 0, 1, 6)
 		self.dibujarParedInvisible(game.at(6, 2), 0, 0, 1)
 		self.dibujarParedInvisible(game.at(8, 2), 1, 0, 3)
+		self.dibujarParedInvisible(game.at(0, 11), 1, 0, 11)
+		self.dibujarParedInvisible(game.at(0, 11), 0, 0, 1)
 		
 	}
 	

@@ -8,7 +8,9 @@ import vida.*
 import mainMenu.*
 
 program UNQgame {
+	
 	game.title("AmUNQ Us")
+ 	
  	//Player
 	game.addVisual(player)
  	
@@ -19,7 +21,6 @@ program UNQgame {
 	// CONFIGURACIONES
 	game.height(12)
 	game.width(12)
-	
 	
 	// DEBUG
 	game.showAttributes(player)
