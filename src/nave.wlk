@@ -15,6 +15,6 @@ object nave {
 	
 	method atacarAlColisionar(){
 			accionesRestantes.forEach({accion => accion.atacarCuandoColisiona()})
-		}
+	}
 		
 }

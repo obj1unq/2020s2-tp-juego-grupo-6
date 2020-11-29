@@ -27,6 +27,7 @@ class Nivel {
 		config.configurarTeclas()
 		nave.nivelActual(self)
 		game.addVisual(new MedBay())
+		self.ponerEscotilla()
 		game.addVisual(player)	
 		config.configurarColisiones()
 		game.addVisual(barraVida)
@@ -43,6 +44,10 @@ class Nivel {
 	method pasarDeNivel() {self.siguienteNivel().iniciar()
 	}
 	
+	method ponerEscotilla(){
+		
+	}
+	
 }
 
 object nivel1 inherits Nivel {
@@ -51,6 +56,10 @@ object nivel1 inherits Nivel {
 		game.addVisual(new BoardGround (image = "fondoLvl1.png"))
 	}
 	
+	override method ponerEscotilla(){
+			game.addVisual(new Escotilla(position = game.at(3, 5), image = "escotilla.png"))		
+		}		
+		
 	override method iniciar() {
 				
 		super()
@@ -83,8 +92,6 @@ object nivel1 inherits Nivel {
 		self.dibujarPared(game.at(7, 7), 0, 1, 2)
 		self.dibujarPared(game.at(3, 10), 1, 0, 2)
 		
-		game.addVisual(new Escotilla(position = game.at(3, 5), image = "escotilla.png"))		
-		
 		// Misiones
 		generadorTripulantes.nuevoTripulante(5)
 		
@@ -95,13 +102,16 @@ object nivel1 inherits Nivel {
 }
 
 object nivel2 inherits Nivel {
- 	
+ 	var property paredes = []
 
+	override method ponerEscotilla(){
+			game.addVisual(new Escotilla(position = game.at(5, 5), image = "escotilla.png"))		
+		}
+		
 	override method iniciar() {
 		super()
 		
 		
-		game.addVisual(new Escotilla(position = game.at(5, 5), image = "escotilla.png"))
 		game.addVisual(botonMisterioso)
 		player.position(game.origin())
 		game.addVisual(new Nafta())
@@ -126,6 +136,16 @@ object nivel2 inherits Nivel {
 	
 	override method ponerFondo(){
 		game.addVisual(new BoardGround (image = "fondoLvl2.png"))
+	}
+	
+	method borrarParedesToscas(){
+		paredes.forEach({pared => pared.removeVisual(pared)})
+		
+	}
+	
+	method dibujarPared(posicionInicial, direccionX, direccionY, cantidadAMover, pared){
+		cantidadAMover.times({ indice => game.addVisualIn(pared, game.at(posicionInicial.x() + direccionX * indice, posicionInicial.y() + direccionY * indice))})
+		paredes.add(pared)	
 	}
 	
 }

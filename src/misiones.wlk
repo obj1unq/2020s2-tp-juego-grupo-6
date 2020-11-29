@@ -4,6 +4,7 @@ import wollok.game.*
 import player.*
 import randomizer.*
 import enemigos.*
+import paredes.*
 
 
 
@@ -141,6 +142,7 @@ class Escudos inherits Mision{
 		if(not self.faltaRealizar()){
 		super()
 		game.removeTickEvent("efectoEscudos")	
+		nivel2.borrarParedesToscas()
 		
 		}
 		
@@ -154,8 +156,8 @@ class Escudos inherits Mision{
 		game.onTick(5000, "efectoEscudos", { self.dibujarParedAleatoria()})
 	}
 	
-	method dibujarParedAleatoria(){
-		nivel2.dibujarPared(randomizer.emptyPosition(), 0, 0, 1)
+	method dibujarParedAleatoria(){	
+		nivel2.dibujarPared(randomizer.emptyPositionNoTosca(), 0, 0, 1, new Pared())
 		
 	}
 	
@@ -166,6 +168,7 @@ object botonMisterioso inherits Mision{
 	override method position() = game.at(6,11)
 	
 	override method serRealizada() {
+		 if(not self.faltaRealizar()){
 			image = self.imagenSaboteada()
 			game.say(self, "Atrapa a Pepita")
 			fueSaboteada = true
@@ -174,7 +177,7 @@ object botonMisterioso inherits Mision{
 			nave.agregarAccion(pepita)
 			pepita.moverse()
 	}
-	
+}
 	override method imagenSaboteada() {return "Jaula.png"}
 	
 	override method initialize() {

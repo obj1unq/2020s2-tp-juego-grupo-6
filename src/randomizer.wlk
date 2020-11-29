@@ -1,4 +1,5 @@
 import wollok.game.*
+import nave.*
 
 object randomizer {
 	
@@ -21,6 +22,23 @@ object randomizer {
 			return self.emptyPosition()
 		}
 	}
+	
+	
+	method emptyPositionNoTosca() {
+		const position = self.position()
+		if((game.getObjectsIn(position).isEmpty()) and (not nave.accionesRestantes().any({accion => accion.esVecino(accion, position)}))) {
+			return position	
+		}
+		else {
+			return self.emptyPositionNoTosca()
+		}
+	}
+	
+	method esVecino(elemento, position) {
+		return elemento.position().distance(position) < 2
+	}
+	
+	
 	
 	/*method image() {
 		const colores = ["tripulanteAmarillo.png", "tRojo.png", "tNaranja.png",  "tNegro.png",  "tVerde.png"]
