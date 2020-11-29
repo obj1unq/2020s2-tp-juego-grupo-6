@@ -63,7 +63,7 @@ object nivel1 inherits Nivel {
 	override method iniciar() {
 				
 		super()
-		//config.musica()
+		config.musica()
 		
 		game.addVisual(new PasswordCode())
 		game.addVisual(new Cableado())			

@@ -3,7 +3,7 @@ import nave.*
 
 object randomizer {
 	
-	const colores = ["tripulanteAmarillo.png", "tRojo.png",  "tNegro.png",  "tVerde.png", "tNaranja.png"]
+	const colores = ["tAmarillo.png", "tRojo.png",  "tNegro.png",  "tVerde.png", "tNaranja.png"]
 	var posicionColorActual = 0
 	
 	method position() {

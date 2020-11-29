@@ -24,6 +24,7 @@ program UNQgame {
 	
 	// DEBUG
 	game.showAttributes(player)
+	
 	// START
 	game.start()
 	

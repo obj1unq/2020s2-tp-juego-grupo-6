@@ -12,7 +12,7 @@ class Tripulante inherits Personajes{
 	var property image
 	var property position
 	const property direcciones = [arriba, abajo, izquierda, derecha]
-	// Tener el color como atributo y image como metodo.
+	
  
 	method muerto() {
 		return vida == 0
@@ -23,41 +23,33 @@ class Tripulante inherits Personajes{
 	}
 
 	method teEncontro(player) {
-		if (self.vida() > 0) {
+		if (self.estaVivo()) {
 			self.atacar(player)
 		}
 	}
+	
+	method estaVivo(){
+		return self.vida() > 0
+	}
 
 	override method atacar(player) {
-		// averiguar si se puede poner una animacion
 		player.esAtacado()
 	}
 
 	method serRealizada() {
+		if(self.estaVivo())
 		self.colorMuerto()
 		vida = 0
 	}
 
 	method colorMuerto() { //Hacer metodo que modele imagen.
-		if (self.image() == "tripulanteAmarillo.png") {
-			self.image("deadAmarillo.png")
-		} else if (self.image() == "tRojo.png") {
-			self.image("deadRojo.png")
-		} else if (self.image() == "tNegro.png") {
-			self.image("deadNegro.png")
-		} else if (self.image() == "tVerde.png") {
-			self.image("deadVerde.png")
-		} else if (self.image() == "tNaranja.png") {
-			self.image("deadNaranja.png")
-		}
+		self.image("dead" + self.image())
+		
 	}
 
 
-	// que caminen por el nivel
-
-
 	method caminar(direccion) {
-		if (vida > 0) {
+		if (self.estaVivo()) {
 			const proximaPosicion = direccion.siguiente(self.position())
 			if (self.estaDentroDeLaPantalla(proximaPosicion) and not self.paredColisionada(proximaPosicion)) {
 				self.position(proximaPosicion)
@@ -100,7 +92,6 @@ object pepita inherits Tripulante{
 	}
 	
 	method moverse() {game.onTick(200, "pepitaSeMueve", {self.caminar(self.moverseRandom())})}
-	
 	
 }
 

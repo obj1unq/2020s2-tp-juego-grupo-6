@@ -26,9 +26,6 @@ class Escotilla inherits Mision{
 	}
 	
 	
-	//validar tripulantes y  sabotajes 
-	
-	
 	override method serRealizada() {
 		self.validarAcciones()
 		super()
