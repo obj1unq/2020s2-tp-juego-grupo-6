@@ -71,8 +71,8 @@ class Tripulante inherits Personajes{
 	}
   }
   
-  	method faltaRealizar(){
-  		return not self.muerto()
+  	method fueHecha(){
+  		return self.muerto()
   }
 	
 	method esVecino(elemento, posicion) {
@@ -81,15 +81,20 @@ class Tripulante inherits Personajes{
 }
 
 object pepita inherits Tripulante{
+	var property fueCapturada = false
 	
 	override method image(){
 		return "pepita.png"
 	}
 	
+	override method fueHecha(){
+		return fueCapturada
+	}
 	
 	override method atacar(player) {}
 	
 	override method serRealizada(){
+		fueCapturada = true
 	    game.removeVisual(self)
 		game.say(player, "Te atrape!")
 	}

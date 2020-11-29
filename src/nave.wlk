@@ -10,7 +10,7 @@ object nave {
 	method agregarAccion(accion) {accionesRestantes.add(accion)}
 
    
-  	method sinAccionesRestantes(){ return accionesRestantes.any({accion => not accion.faltaRealizar()})}
+  	method sinAccionesRestantes(){ return accionesRestantes.all({accion => accion.fueHecha()})}
 	
 	
 	method atacarAlColisionar(){

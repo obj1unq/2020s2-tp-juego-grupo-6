@@ -37,7 +37,7 @@ class Mision {
    }
    
 	
-	method faltaRealizar(){
+	method fueHecha(){
 		return fueSaboteada
 	}
 	
@@ -53,7 +53,7 @@ class PasswordCode inherits Mision {
 	override method position() = game.at(11, 11)
 
 	override method serRealizada() {
-		if(not self.faltaRealizar()){
+		if(not self.fueHecha()){
 		super()
 		game.removeTickEvent("efectoNoSabotaje")	
 	}
@@ -92,7 +92,7 @@ class MedBay inherits Mision {
 	var property position = game.at(0, 8)
 
 	override method serRealizada() {
-		if (not self.fueSaboteada()) {
+		if (not self.fueHecha()) {
 			player.vida(100)
 			fueSaboteada = true
 		} else {
@@ -115,7 +115,7 @@ class Nafta inherits Mision{
 	override method position() = game.at(1,11)
 	
 	override method serRealizada() {
-		if(not self.faltaRealizar()){
+		if(not self.fueHecha()){
 		super()
 		game.removeTickEvent("efectoNoSabotaje")	
 		
@@ -139,7 +139,7 @@ class Escudos inherits Mision{
 	override method position() = game.at(11,11)
 	
 	override method serRealizada() {
-		if(not self.faltaRealizar()){
+		if(not self.fueHecha()){
 		super()
 		game.removeTickEvent("efectoEscudos")	
 		nivel2.borrarParedesToscas()
@@ -168,7 +168,7 @@ object botonMisterioso inherits Mision{
 	override method position() = game.at(6,11)
 	
 	override method serRealizada() {
-		 if(not self.faltaRealizar()){
+		 if(not self.fueHecha()){
 			image = self.imagenSaboteada()
 			game.say(self, "Atrapa a Pepita")
 			fueSaboteada = true
@@ -184,9 +184,9 @@ object botonMisterioso inherits Mision{
 		super() 
 		self.image("botonMisterioso.png")
 		
-		}
-	
+	}
 }
+
 	 
 
 
