@@ -11,7 +11,8 @@ program UNQgame {
 	
 	game.title("AmUNQ Us")
  	
- 	
+ 	//Player
+	game.addVisual(player)
  	
 	//MainMenu
 	

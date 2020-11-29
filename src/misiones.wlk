@@ -14,10 +14,10 @@ class Mision {
 	
 	method position() 
 
-	method serSaboteada() {
+	method serRealizada() {
 		image = self.imagenSaboteada()
 		fueSaboteada = true
-		nave.removerMision(self)
+
 	}
 
 	method teDejaPasar() = true
@@ -26,19 +26,22 @@ class Mision {
 	
 	method imagenSaboteada()
 
-   override method initialize() {
-   		nave.agregarSabotaje(self)
+	
+	method esVecino(elemento, posicion) {
+		return elemento.position().distance(posicion) < 2
+	}
+   
+    override method initialize() {
+   		nave.agregarAccion(self)
    }
    
-   
 	
-	method esMisionCercana(){
-		return self.position().distance(player.position()) <= 1 
+	method faltaRealizar(){
+		return fueSaboteada
 	}
 	
-	
-	method esVecino(tripulante, posicion) {
-		return tripulante.position().distance(posicion) < 2
+	method atacarCuandoColisiona() {
+		//no hace nada pero lo necesita saber porque todas las acciones de la nave necesitan saber este mensaje(pero solo lo utiliza los tripulantes)
 	}
 	
 }
@@ -48,12 +51,12 @@ class PasswordCode inherits Mision {
 	
 	override method position() = game.at(11, 11)
 
-	override method serSaboteada() {
+	override method serRealizada() {
+		if(not self.faltaRealizar()){
 		super()
-		game.removeTickEvent("efectoNoSabotaje")
-		
-		
+		game.removeTickEvent("efectoNoSabotaje")	
 	}
+}
 	
 	
 	override method imagenSaboteada() {return "passwordRedCode.png"}
@@ -70,7 +73,7 @@ class Cableado inherits Mision {
 
 	override method position() = game.at(1, 11)
 
-	override method serSaboteada() {
+	override method serRealizada() {
 		super()
 		config.agregarTiempoDeJuego(20)
 		
@@ -87,29 +90,22 @@ class MedBay inherits Mision {
 
 	var property position = game.at(0, 8)
 
-	override method serSaboteada() {
+	override method serRealizada() {
 		if (not self.fueSaboteada()) {
 			player.vida(100)
 			fueSaboteada = true
-			nave.removerMision(self)
 		} else {
 			self.error("Ya fue utilizada")
 		}
 	}
 	
 	
-	
 	override method imagenSaboteada() {}
 	
 	override method initialize() {super() self.image("MedBay.png")}
-	//no deberia ser super ya q la idea del juego es q no sea necesario
-	//para pasar de nivel pero si le saco el super y el remove en
-	// el method serSaboteada() no cura mas
-	
-	//preguntar al profe q hay q hacer 
 	 
-	override method esMisionCercana(){
-		return self.position() == player.position()
+	override method esVecino(elemento, posicion){
+		return elemento.position() == player.position()
 	}
 }	
 	
@@ -117,9 +113,12 @@ class Nafta inherits Mision{
 		
 	override method position() = game.at(1,11)
 	
-	override method serSaboteada() {
+	override method serRealizada() {
+		if(not self.faltaRealizar()){
 		super()
 		game.removeTickEvent("efectoNoSabotaje")	
+		
+		}
 	}
 	
 	override method imagenSaboteada() {return "naftaSaboteada.png"}
@@ -138,9 +137,12 @@ class Escudos inherits Mision{
 	
 	override method position() = game.at(11,11)
 	
-	override method serSaboteada() {
+	override method serRealizada() {
+		if(not self.faltaRealizar()){
 		super()
 		game.removeTickEvent("efectoEscudos")	
+		
+		}
 		
 	}
 	
@@ -163,13 +165,13 @@ object botonMisterioso inherits Mision{
 	
 	override method position() = game.at(6,11)
 	
-	override method serSaboteada() {
+	override method serRealizada() {
 			image = self.imagenSaboteada()
 			game.say(self, "Atrapa a Pepita")
 			fueSaboteada = true
 			pepita.position(game.at(8,10))
 			game.addVisual(pepita)
-			nave.agregarEnemigo(pepita)
+			nave.agregarAccion(pepita)
 			pepita.moverse()
 	}
 	

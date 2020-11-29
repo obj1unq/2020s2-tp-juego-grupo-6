@@ -39,7 +39,7 @@ object player inherits Personajes{
 	}
 
 
-	override method esAtacado() {
+	 method esAtacado() {
 		vida -= 10
 		vida = vida.max(0)
 		if (vida == 0) {
@@ -51,19 +51,18 @@ object player inherits Personajes{
 
 	override method atacar(tripulante) {
 		tripulante.esAtacado()
-		nave.removerTripulante(tripulante)
 	}
 
 	method tripulanteColosionado() {
-		const tripulantes = nave.enemigosRestantes().filter({ tripulante => self.esVecino(tripulante, self.position()) })
+		const tripulantes = nave.accionesRestantes().filter({ elemento => self.esVecino(elemento, self.position()) })
 		if (tripulantes.isEmpty()) {
-			self.error("No hay un tripulante")
+			self.error("No hay accion a realizar")
 		}
 		return tripulantes.head()
 	}
 
-	method esVecino(tripulante, posicion) {
-		return tripulante.position().distance(posicion) < 2
+	method esVecino(elemento, posicion) {
+		return elemento.position().distance(posicion) < 2
 	}
 
 	method perder() {
@@ -81,24 +80,24 @@ object player inherits Personajes{
 	}
 	
 	method realizarAccion() {
-		if (self.hayMisionCerca()) {
-			self.sabotear()
+		if (self.hayAccionCerca()) {
+			self.accionar()
 		} else {
-			self.atacar(self.tripulanteColosionado())
+			self.error("No hay accion a realizar")
 		} 
 	}
 
-	method sabotear() {
-		self.getMisionCercana().serSaboteada()
+	method accionar() {
+		self.getAccionCercana().serRealizada()
 		
 	}
  
-	method hayMisionCerca(){
-		return nave.sabotajesRestantes().any({mision=> mision.esMisionCercana()})
+	method hayAccionCerca(){
+		return nave.accionesRestantes().any({elemento=> elemento.esVecino(elemento, self.position())})
 	}
 	
-	method getMisionCercana(){
-		return nave.sabotajesRestantes().filter({mision=> mision.esMisionCercana()}).anyOne()
+	method getAccionCercana(){
+		return nave.accionesRestantes().filter({elemento=> elemento.esVecino(elemento, self.position())}).anyOne()
 	}
 	
 	

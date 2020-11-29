@@ -33,7 +33,7 @@ class Tripulante inherits Personajes{
 		player.esAtacado()
 	}
 
-	override method esAtacado() {
+	method serRealizada() {
 		self.colorMuerto()
 		vida = 0
 	}
@@ -66,11 +66,18 @@ class Tripulante inherits Personajes{
 	}
 	
 	method atacarCuandoColisiona(){
-		if (self.position().distance(player.position()) == 0){
+		if ((self.position().distance(player.position()) == 0) and (not self.muerto())){
 			player.esAtacado()
 	}
   }
-
+  
+  	method faltaRealizar(){
+  		return not self.muerto()
+  }
+	
+	method esVecino(elemento, posicion) {
+		return elemento.position().distance(posicion) < 2
+	}
 }
 
 object pepita inherits Tripulante{
@@ -82,10 +89,8 @@ object pepita inherits Tripulante{
 	
 	override method atacar(player) {}
 	
-	override method esAtacado(){
+	override method serRealizada(){
 	    game.removeVisual(self)
-	    nave.removerTripulante(self)
-		nave.removerMision(botonMisterioso)
 		game.say(player, "Te atrape!")
 	}
 	

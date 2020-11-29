@@ -15,38 +15,33 @@ class Escotilla inherits Mision{
 	
  	override method initialize() {
  		super()
+ 		fueSaboteada = true	
 		self.image("escotilla.png")	
 	}
 	
 	override method teDejaPasar() {return true}
 	
-	override method esMisionCercana(){
-		return self.position().distance(player.position()) == 0 
+	override method esVecino(elemento, posicion){
+		return elemento.position().distance(player.position()) == 0 
 	}
 	
 	
 	//validar tripulantes y  sabotajes 
 	
 	
-	override method serSaboteada() {
-		self.validarTripulantes()
-		self.validarMisiones()
+	override method serRealizada() {
+		self.validarAcciones()
 		super()
 		nave.nivelActual().pasarDeNivel()
 		game.say(player, "Level up")
 		
 	}
 	
-	method validarTripulantes(){
-		if (not nave.sinTripulantes()){
-			self.error("Hay tripulantes vivos")
+	method validarAcciones(){
+		if (not nave.sinAccionesRestantes()){
+			self.error("Te faltan cumplir objetivos")
 		}
 	}
 	
-	method validarMisiones(){
-		if (not nave.sinSabotajes()){
-			self.error("Hay misiones sin sabotear")
-		}
-	}
 }
 

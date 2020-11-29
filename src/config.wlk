@@ -108,13 +108,6 @@ object nivel2 inherits Nivel {
 		game.addVisual(new Escudos())
 		generadorTripulantes.nuevoTripulante(7)
 		
-		/*self.dibujarPared(game.at(4, 6), 0, 1, 2)
-		self.dibujarPared(game.at(5, 7), 1, 0, 4)
-		self.dibujarPared(game.at(5, 9), 1, 0, 1)	
-		self.dibujarPared(game.at(7, 7), 0, 1, 2)
-		self.dibujarPared(game.at(8, 5), 0, 0, 1)
-		self.dibujarPared(game.at(9, 4), 0, 1, 5)*/
-		
 		self.dibujarParedInvisible(game.at(-1, 2), 1, 0, 3)
 		self.dibujarParedInvisible(game.at(0, 5), 0, 0, 1)
 		self.dibujarParedInvisible(game.at(1, 5), 1, 0, 2)
@@ -143,8 +136,7 @@ object nivel3DeCreditos {
 		game.clear()
 		self.ponerFondo()
 		config.configurarTeclas()
-		//tendriamos que sacar el player ya no se usa
-		game.addVisual(player)
+ 		game.addVisual(player)
 		game.onTick(15000, "Ganar", {=>player.ganar()})
 	}
 	
@@ -160,7 +152,7 @@ object config {
 	var property tiempoDeJuego = 1000
 
 	// TECLAS
-	method configurarTeclas() { // rompe encapsulamiento
+	method configurarTeclas() { 
 		keyboard.left().onPressDo({ player.irASiSeMantieneEnLaPantalla(izquierda)}) 
 		keyboard.right().onPressDo({ player.irASiSeMantieneEnLaPantalla(derecha)})
 		keyboard.up().onPressDo({ player.irASiSeMantieneEnLaPantalla(arriba)})
@@ -169,7 +161,7 @@ object config {
 	}
 
 	method configurarColisiones() {
-		game.onTick(200, "Atacar enemigo", {=> nave.ataqueDeEnemigoAlColisionar()})
+		game.onTick(200, "Atacar enemigo", {=> nave.atacarAlColisionar()})
 }
 
 
@@ -207,7 +199,7 @@ object generadorTripulantes {
 			const nuevoTripulante = tripulantesFactory.spawnearTripulante()
 			game.addVisual(nuevoTripulante)
 			tripulantesGenerados.add(nuevoTripulante)
-			nave.agregarEnemigo(nuevoTripulante)
+			nave.agregarAccion(nuevoTripulante)
 			game.onTick(500, "Enemigo se mueve", {=> nuevoTripulante.caminar(nuevoTripulante.moverseRandom())})
 		}
 	}

@@ -1,29 +1,20 @@
 import config.*
 
 object nave {
-	var property enemigosRestantes = []
-	var property sabotajesRestantes = []
+	
+	var property accionesRestantes = [] //lista de enemigos y sabotajes restantes
+	
 	var property nivelActual = null
-	
-	method agregarEnemigo(tripulante) {enemigosRestantes.add(tripulante)}
-	
-	method agregarSabotaje(artefacto) {sabotajesRestantes.add(artefacto)}
-	
-	method sinTripulantes() {return enemigosRestantes.isEmpty()}
-	
-	method sinSabotajes() {return sabotajesRestantes.size() == 1}
-	
-	
-	method removerTripulante(tripulante){
-		enemigosRestantes.remove(tripulante)
-	}	
-	
-	method removerMision(mision){
-	 	sabotajesRestantes.remove(mision)
-	}
-	
-	  method ataqueDeEnemigoAlColisionar(){
-  		enemigosRestantes.forEach({tripulante => tripulante.atacarCuandoColisiona()})
-	}
 
+	
+	method agregarAccion(accion) {accionesRestantes.add(accion)}
+
+   
+  	method sinAccionesRestantes(){ return accionesRestantes.any({accion => not accion.faltaRealizar()})}
+	
+	
+	method atacarAlColisionar(){
+			accionesRestantes.forEach({accion => accion.atacarCuandoColisiona()})
+		}
+		
 }
