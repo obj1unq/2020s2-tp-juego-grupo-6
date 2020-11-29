@@ -23,6 +23,7 @@ class Nivel {
 	
 	method iniciar() {
 		game.clear()
+		
 		self.ponerFondo()
 		config.configurarTeclas()
 		nave.nivelActual(self)
@@ -32,6 +33,7 @@ class Nivel {
 		config.configurarColisiones()
 		game.addVisual(barraVida)
 		config.tiempoDeJuego(60)
+		game.addVisual(time)
 		
 		self.dibujarParedInvisible(game.at(0, 11), 1, 0, 11)
 		self.dibujarParedInvisible(game.at(0, 11), 0, 0, 1)
@@ -184,21 +186,22 @@ object config {
 		game.onTick(200, "Atacar enemigo", {=> nave.atacarAlColisionar()})
 }
 
-
 	method tiempoDeJuego(tiempo) {
 		game.schedule( tiempoDeJuego * tiempo, { player.perder() } )
 		game.say(player, "Tenés 1 minuto para sabotear la nave y matar a los tripulantes")
 	}
 
+	method agregarTiempoDeJuego(tiempo) {
+		tiempoDeJuego += tiempo
+	}
+	
 	method musica() {
 		const audio = game.sound("amongUsTrap.wav")
 		audio.shouldLoop(true)
 		game.schedule(500, { => audio.play()})
 	}
-
-	method agregarTiempoDeJuego(tiempo) {
-		tiempoDeJuego += tiempo
-	}
+	
+	
 
 }
 
@@ -224,5 +227,25 @@ object generadorTripulantes {
 		}
 	}
 
+}
+
+object time{
+	var property time = 0
+	
+	method image()= "vacia.png"
+	
+	method position() = game.at(13,-1) //afuera de las medidas para que quede mas estetico	
+	override method initialize(){
+		game.onTick(1000, "contar tiempo", { time+= 1 } )
+		game.onTick(2000, "decir tiempo", { self.decirTiempo() } )
+	}
+	
+	method decirTiempo(){
+		game.say(self, self.time().toString() )
+	}
+	
+	method teDejaPasar() {return true}
+	
+	
 }
 

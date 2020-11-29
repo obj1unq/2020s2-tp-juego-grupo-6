@@ -66,8 +66,9 @@ object player inherits Personajes{
 	}
 
 	method perder() {
-		if (self.vida() == 0) game.say(self, "Derrota")
+		game.say(self, "Derrota")
 		self.finalizarJuego()
+		
 	}
 
 	method ganar() {
