@@ -3,7 +3,8 @@ import nave.*
 
 object randomizer {
 	
-	const colores = ["tAmarillo.png", "tRojo.png",  "tNegro.png",  "tVerde.png", "tNaranja.png"]
+	const colores = ["tAmarillo.png", "tRojo.png",  "tNegro.png",  "tVerde.png", "tNaranja.png", "tBlanco.png","tCeleste.png","tMarron.png",
+						"tRosa.png","tVioleta.png","tAzul.png"]
 	var posicionColorActual = 0
 	
 	method position() {
@@ -23,7 +24,6 @@ object randomizer {
 		}
 	}
 	
-	
 	method emptyPositionNoTosca() {
 		const position = self.position()
 		if((game.getObjectsIn(position).isEmpty()) and (not nave.accionesRestantes().any({accion => accion.esVecino(accion, position)}))) {
@@ -37,13 +37,6 @@ object randomizer {
 	method esVecino(elemento, position) {
 		return elemento.position().distance(position) < 2
 	}
-	
-	
-	
-	/*method image() {
-		const colores = ["tripulanteAmarillo.png", "tRojo.png", "tNaranja.png",  "tNegro.png",  "tVerde.png"]
-		return 	colores.anyOne()
-	}//se repiten los colores*/
 	
 	method image() {
 		

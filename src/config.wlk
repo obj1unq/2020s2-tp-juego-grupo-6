@@ -246,6 +246,5 @@ object time{
 	
 	method teDejaPasar() {return true}
 	
-	
 }
 

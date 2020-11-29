@@ -26,10 +26,8 @@ object player inherits Personajes{
 	method irA(nuevaPosicion) {
 		// Precondiciones
 		self.validarParaMoverse(nuevaPosicion)
-			// Acción
-		if (not self.paredColisionada(nuevaPosicion)) position = nuevaPosicion
-	// Postcondiciones
-	// self.checkearSiTerminoElJuego()
+		// Acción
+		if (not self.paredColisionada(nuevaPosicion) and not self.estaMuerto()) position = nuevaPosicion
 	}
 
 	method validarParaMoverse(nuevaPosicion) {
@@ -38,15 +36,17 @@ object player inherits Personajes{
 		}
 	}
 
-
 	 method esAtacado() {
 		vida -= 10
 		vida = vida.max(0)
-		if (vida == 0) {
-			// implementar dejar de moverse con las teclas si muere (quedarse quieto en el lugar)
+		if (self.estaMuerto()) {
 			self.image("dead.png")
 			self.perder()
 		}
+	}
+	
+	method estaMuerto(){
+		return vida == 0
 	}
 
 	override method atacar(tripulante) {
@@ -77,7 +77,7 @@ object player inherits Personajes{
 	}
 
 	method finalizarJuego() {
-		game.schedule(3000, { game.stop()})
+		game.schedule(4000, { game.stop()})
 	}
 	
 	method realizarAccion() {
