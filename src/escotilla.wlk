@@ -15,7 +15,7 @@ class Escotilla inherits Mision{
 	
  	override method initialize() {
  		super()
- 		fueSaboteada = true	
+ 		fueSaboteada = true
 		self.image("escotilla.png")	
 	}
 	
@@ -27,8 +27,8 @@ class Escotilla inherits Mision{
 	
 	
 	override method serRealizada() {
+		image = self.imagenSaboteada()
 		self.validarAcciones()
-		super()
 		nave.nivelActual().pasarDeNivel()
 		game.say(player, "Level up")
 		
