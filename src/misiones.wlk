@@ -11,7 +11,7 @@ import paredes.*
 class Mision {
 
 	var property fueSaboteada = false
-	var property image //Image deberia ser un metodo.
+	var property image
 	
 	method position() 
 

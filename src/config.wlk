@@ -23,7 +23,6 @@ class Nivel {
 	
 	method iniciar() {
 		game.clear()
-		
 		self.ponerFondo()
 		config.configurarTeclas()
 		nave.nivelActual(self)
@@ -33,7 +32,6 @@ class Nivel {
 		config.configurarColisiones()
 		game.addVisual(barraVida)
 		config.tiempoDeJuego(60)
-		game.addVisual(time)
 		
 		self.dibujarParedInvisible(game.at(0, 11), 1, 0, 11)
 		self.dibujarParedInvisible(game.at(0, 11), 0, 0, 1)
@@ -46,9 +44,7 @@ class Nivel {
 	method pasarDeNivel() {self.siguienteNivel().iniciar()
 	}
 	
-	method ponerEscotilla(){
-		
-	}
+	method ponerEscotilla(){}
 	
 }
 
@@ -66,12 +62,11 @@ object nivel1 inherits Nivel {
 				
 		super()
 		config.musica()
+		game.addVisual(new Time())
 		
 		game.addVisual(new PasswordCode())
 		game.addVisual(new Cableado())			
 			
-		
-		
 		// DIBUJAR PAREDES
 		
 		self.dibujarPared(game.at(0, 5), 1, 0, 2)
@@ -111,14 +106,16 @@ object nivel2 inherits Nivel {
 		}
 		
 	override method iniciar() {
+		
 		super()
 		
-		
+		game.addVisual(new Time())
 		game.addVisual(botonMisterioso)
 		player.position(game.origin())
 		game.addVisual(new Nafta())
 		game.addVisual(new Escudos())
 		generadorTripulantes.nuevoTripulante(7)
+		
 		
 		self.dibujarParedInvisible(game.at(-1, 2), 1, 0, 3)
 		self.dibujarParedInvisible(game.at(0, 5), 0, 0, 1)
@@ -157,8 +154,9 @@ object nivel3DeCreditos {
 	method iniciar() {
 		game.clear()
 		self.ponerFondo()
+		game.addVisual(player)
+		player.position(game.origin())
 		config.configurarTeclas()
- 		game.addVisual(player)
 		game.onTick(15000, "Ganar", {=>player.ganar()})
 	}
 	
@@ -229,12 +227,12 @@ object generadorTripulantes {
 
 }
 
-object time{
+class Time{
 	var property time = 0
-	
+	var property position = game.at(13,-1) //afuera del tablero para que quede mas estetico	
 	method image()= "vacia.png"
 	
-	method position() = game.at(13,-1) //afuera de las medidas para que quede mas estetico	
+	
 	override method initialize(){
 		game.onTick(1000, "contar tiempo", { time+= 1 } )
 		game.onTick(2000, "decir tiempo", { self.decirTiempo() } )
