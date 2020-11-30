@@ -131,7 +131,7 @@ object mainMenu {
  	
  	override method ejecutar(){
  		super()
- 		game.addVisual(new BoardGround (image = "fondoDeMisionesMenu.jpg"))
+ 		game.addVisual(new BoardGround (image = "fondoMisiones.jpg"))
  		keyboard.backspace().onPressDo({
  		game.clear()
  		mainMenu.armarMenu()})
