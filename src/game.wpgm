@@ -10,12 +10,10 @@ import mainMenu.*
 program UNQgame {
 	
 	game.title("AmUNQ Us")
- 	
- 	//Player
+	//Player
 	game.addVisual(player)
  	
 	//MainMenu
-	
 	mainMenu.armarMenu()
 		
 	// CONFIGURACIONES

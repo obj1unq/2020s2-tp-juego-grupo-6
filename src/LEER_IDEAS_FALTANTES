@@ -1,25 +1,6 @@
-*PLAYER
-Implementar se puede animar y cambiar la imagen cuando camina [2]
-
-*CONFIG
-
-*GAME
-cambiar las paredes del lvl 2 segun el fondo de ese lvl en paredes
-
-*ENEMIGOS
-
-animacion de caminar 
-
-*MISIONES
-
-	
-reducir el tiempo de juego si esta arreglada -> podes perder si se agota todo el tiempo
-
-*ESCOTILLA
-que se vea la imagen de la escotilla abierta cuando pasa al lvl 2
  
 IMORTANTE: 1-Coleccion polimorfica de nave // hecho
-           2-Usar las imagenes como metodo
+           2-Usar las imagenes como metodo//hecho
            3-No remover misiones y tripulantes de la coleccion, consultar condiciones//hecho
-           4-El reloj
+           4-El reloj//hecho
 

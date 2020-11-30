@@ -42,7 +42,7 @@ class Tripulante inherits Personajes{
 		vida = 0
 	}
 
-	method colorMuerto() { //Hacer metodo que modele imagen.
+	method colorMuerto() { 
 		self.image("dead" + self.image())
 		
 	}
