@@ -10,6 +10,8 @@ import mainMenu.*
 program UNQgame {
 	
 	game.title("AmUNQ Us")
+	//Player
+	game.addVisual(player)
  	
 	//MainMenu
 	mainMenu.armarMenu()
@@ -17,9 +19,6 @@ program UNQgame {
 	// CONFIGURACIONES
 	game.height(12)
 	game.width(12)
-	
-	//Player
-	game.addVisual(player)
 	
 	// DEBUG
 	game.showAttributes(player)
